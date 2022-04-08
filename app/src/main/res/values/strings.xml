@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChatWithImaginaryFriends</string>
+    <string name="action_heart">Heart</string>
+    <string name="action_character">Character</string>
+    <string name="action_chat">Chat</string>
+    <string name="action_setting">Setting</string>
+</resources>

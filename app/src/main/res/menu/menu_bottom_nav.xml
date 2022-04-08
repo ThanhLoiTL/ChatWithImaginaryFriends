@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_heart"
+        android:title="@string/action_heart"
+        android:icon="@drawable/favorite_24"/>
+
+    <item android:id="@+id/action_character"
+        android:title="@string/action_character"
+        android:icon="@drawable/person_24"/>
+    <item android:id="@+id/action_chat"
+        android:title="@string/action_chat"
+        android:icon="@drawable/question_answer_24"/>
+
+    <item android:id="@+id/action_setting"
+        android:title="@string/action_setting"
+        android:icon="@drawable/settings_24"/>
+</menu>
