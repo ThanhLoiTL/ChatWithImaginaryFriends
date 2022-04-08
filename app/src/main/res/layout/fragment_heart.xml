@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Heart"
-        android:textSize="36sp"
-        android:layout_centerInParent="true"/>
+        android:text="Hearts"
+        android:textSize="24sp"
+        android:textColor="@color/root"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <ImageButton
+        android:id="@+id/btnSearchHeart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="Search"
+        android:background="@null"
+        android:padding="12dp"
+        android:src="@drawable/ic_search_32"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnAddHeart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/btnSearchHeart"
+        android:background="@null"
+        android:contentDescription="Add"
+        android:padding="12dp"
+        android:src="@drawable/ic_baseline_add_24" />
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAddHeart" />
 </RelativeLayout>

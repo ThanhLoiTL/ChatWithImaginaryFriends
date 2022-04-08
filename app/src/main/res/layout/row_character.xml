@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="Avatar"
+        android:src="@drawable/person_24" />
+
+    <TextView
+        android:id="@+id/txtCharacterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imgAvatar"
+        android:text="Character Name"
+        android:paddingStart="5dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtHeart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:layout_below="@id/txtCharacterName"
+        android:layout_toEndOf="@id/imgAvatar"
+        android:text="Heart"
+        android:textSize="12sp" />
+
+    <ImageButton
+        android:id="@+id/option_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Option"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/more_vert_24"
+        android:background="@null"/>
+</RelativeLayout>

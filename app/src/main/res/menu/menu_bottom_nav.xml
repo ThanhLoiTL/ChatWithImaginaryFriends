@@ -7,6 +7,9 @@
     <item android:id="@+id/action_character"
         android:title="@string/action_character"
         android:icon="@drawable/person_24"/>
+    <item android:id="@+id/action_bot"
+        android:title="@string/action_bot"
+        android:icon="@drawable/bot_24"/>
     <item android:id="@+id/action_chat"
         android:title="@string/action_chat"
         android:icon="@drawable/question_answer_24"/>

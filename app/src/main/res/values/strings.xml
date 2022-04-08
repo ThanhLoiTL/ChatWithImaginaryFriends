@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name"></string>
-    <string name="action_heart">Heart</string>
-    <string name="action_character">Character</string>
-    <string name="action_chat">Chat</string>
-    <string name="action_setting">Setting</string>
+    <string name="action_heart">HEART</string>
+    <string name="action_character">CHARACTER</string>
+    <string name="action_chat">CHAT</string>
+    <string name="action_setting">SETTING</string>
+    <string name="action_bot">BOT</string>
+
 </resources>
