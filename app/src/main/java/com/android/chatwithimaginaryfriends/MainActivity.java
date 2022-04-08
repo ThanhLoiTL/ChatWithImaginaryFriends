@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         navigationMenu = findViewById(R.id.bottom_navigation);
         viewPager = findViewById(R.id.view_pager);
 
+        setUpViewPager();
+
         navigationMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpViewPager() {
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, this);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(viewPagerAdapter);
     }
 }

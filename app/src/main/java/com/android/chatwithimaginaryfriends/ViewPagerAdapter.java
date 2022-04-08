@@ -9,10 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter  {
-    private final Context mContext;
-    public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior, Context mContext) {
+    public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
-        this.mContext = mContext;
     }
 
     @NonNull
