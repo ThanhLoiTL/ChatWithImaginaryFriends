@@ -39,7 +39,7 @@ public class ChatFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Toast.makeText(v.getContext(), "hello", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getActivity(), ChatActivity.class));
     }
     private void AddArrayChat() {
         listChat.add(new ChatModel("Chat A", "hello", false));
