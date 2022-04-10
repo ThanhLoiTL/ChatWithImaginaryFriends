@@ -9,18 +9,23 @@
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1495" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1495" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/ic_search_32.xml" value="0.1495" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/ic_send.xml" value="0.237" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/more_vert_24.xml" value="0.195" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/outline_favorite_24.xml" value="0.229" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/outline_settings_24.xml" value="0.229" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/person_24.xml" value="0.1535" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/activity_chat.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/activity_main.xml" value="0.2526041666666667" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/bot_msg_rv_item.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/fragment_bot.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/fragment_character.xml" value="0.4" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/fragment_chat.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/fragment_heart.xml" value="0.264" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/fragment_setting.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/row_character.xml" value="0.264" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/row_chat.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/row_heart.xml" value="0.4" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/user_msg_rv_item.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/menu/menu_bottom_nav.xml" value="0.2526041666666667" />
       </map>
     </option>

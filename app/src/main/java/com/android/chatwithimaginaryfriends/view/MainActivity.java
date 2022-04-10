@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         navigationMenu = findViewById(R.id.bottom_navigation);
+        //default nav chat
+        addFragment(new ChatFragment());
 
         navigationMenu.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -56,4 +58,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
+
 }
