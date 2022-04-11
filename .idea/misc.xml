@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable-v24/ic_baseline_arrow_back_24.xml" value="0.2065" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1495" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable-v24/messagebackgroun.xml" value="0.2065" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable-v24/recieverchatdrawble.xml" value="0.2065" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable-v24/senderchatdrawable.xml" value="0.2065" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/add_24.xml" value="0.1495" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/bot_24.xml" value="0.2025" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1495" />
@@ -23,7 +27,7 @@
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/fragment_heart.xml" value="0.264" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/fragment_setting.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/row_character.xml" value="0.264" />
-        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/row_chat.xml" value="0.2526041666666667" />
+        <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/row_chat.xml" value="0.264" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/row_heart.xml" value="0.4" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/layout/user_msg_rv_item.xml" value="0.2526041666666667" />
         <entry key="..\:/Year3/HK2/Android/ChatWithImaginaryFriends/app/src/main/res/menu/menu_bottom_nav.xml" value="0.2526041666666667" />

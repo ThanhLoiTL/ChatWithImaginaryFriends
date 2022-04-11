@@ -1,11 +1,11 @@
 package com.android.chatwithimaginaryfriends.model;
 
-public class Character {
+public class CharacterModel {
     private String characterName;
     private String heart;
     private byte[] avatar;
 
-    public Character(String characterName, String heart, byte[] avatar) {
+    public CharacterModel(String characterName, String heart, byte[] avatar) {
         this.characterName = characterName;
         this.heart = heart;
         this.avatar = avatar;

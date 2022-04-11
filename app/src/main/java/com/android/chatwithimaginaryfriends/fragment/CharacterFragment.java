@@ -5,39 +5,34 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.adapter.CharacterAdapter;
-import com.android.chatwithimaginaryfriends.adapter.HeartAdapter;
-import com.android.chatwithimaginaryfriends.model.Character;
-import com.android.chatwithimaginaryfriends.model.Heart;
+import com.android.chatwithimaginaryfriends.model.CharacterModel;
 
 import java.util.ArrayList;
 
 public class CharacterFragment extends ListFragment {
-    ArrayList<Character> listCharacter;
+    ArrayList<CharacterModel> listCharacterModel;
     CharacterAdapter characterAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        listCharacter = new ArrayList<>();
+        listCharacterModel = new ArrayList<>();
         AddArrayCharacter();
-        characterAdapter = new CharacterAdapter(getActivity(), R.layout.row_character, listCharacter);
+        characterAdapter = new CharacterAdapter(getActivity(), R.layout.row_character, listCharacterModel);
         setListAdapter(characterAdapter);
         View view = inflater.inflate(R.layout.fragment_character, container, false);
         return view;
     }
 
     private void AddArrayCharacter() {
-        listCharacter.add(new Character("Character A", "Heart A", null));
-        listCharacter.add(new Character("Character B", "Heart B", null));
-        listCharacter.add(new Character("Character C", "Heart C", null));
-        listCharacter.add(new Character("Character D", "Heart D", null));
-        listCharacter.add(new Character("Character E", "Heart E", null));
+        listCharacterModel.add(new CharacterModel("Character A", "Heart A", null));
+        listCharacterModel.add(new CharacterModel("Character B", "Heart B", null));
+        listCharacterModel.add(new CharacterModel("Character C", "Heart C", null));
+        listCharacterModel.add(new CharacterModel("Character D", "Heart D", null));
+        listCharacterModel.add(new CharacterModel("Character E", "Heart E", null));
     }
 }

@@ -1,10 +1,10 @@
 package com.android.chatwithimaginaryfriends.model;
 
-public class Heart {
+public class HeartModel {
     private String botName;
     private String description;
 
-    public  Heart(String name, String desc){
+    public HeartModel(String name, String desc){
         botName = name;
         description = desc;
     }

@@ -7,23 +7,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.model.Heart;
+import com.android.chatwithimaginaryfriends.model.HeartModel;
 import java.util.List;
 
 public class HeartAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<Heart> listHeart;
+    private List<HeartModel> listHeartModel;
 
-    public HeartAdapter(Context context, int layout, List<Heart> listHeart) {
+    public HeartAdapter(Context context, int layout, List<HeartModel> listHeartModel) {
         this.context = context;
         this.layout = layout;
-        this.listHeart = listHeart;
+        this.listHeartModel = listHeartModel;
     }
 
     @Override
     public int getCount() {
-        return listHeart.size();
+        return listHeartModel.size();
     }
 
     @Override
@@ -52,9 +52,9 @@ public class HeartAdapter extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        Heart heart = listHeart.get(i);
-        viewHolder.txtBotName.setText(heart.getBotName());
-        viewHolder.txtBotDesc.setText(heart.getDescription());
+        HeartModel heartModel = listHeartModel.get(i);
+        viewHolder.txtBotName.setText(heartModel.getBotName());
+        viewHolder.txtBotDesc.setText(heartModel.getDescription());
 
         return view;
     }

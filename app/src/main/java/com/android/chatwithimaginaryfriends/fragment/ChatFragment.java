@@ -6,17 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.adapter.CharacterAdapter;
 import com.android.chatwithimaginaryfriends.adapter.ChatAdapter;
-import com.android.chatwithimaginaryfriends.model.Character;
 import com.android.chatwithimaginaryfriends.model.ChatModel;
 import com.android.chatwithimaginaryfriends.view.ChatActivity;
 
@@ -42,7 +37,7 @@ public class ChatFragment extends ListFragment {
         startActivity(new Intent(getActivity(), ChatActivity.class));
     }
     private void AddArrayChat() {
-        listChat.add(new ChatModel("Chat A", "hello", false));
-        listChat.add(new ChatModel("Chat A", "hahahahaha", false));
+        listChat.add(new ChatModel("Brain Bot", "hello", false));
+        listChat.add(new ChatModel("Love Bot", "hahahahaha", false));
     }
 }

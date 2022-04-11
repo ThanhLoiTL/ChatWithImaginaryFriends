@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.model.Character;
 import com.android.chatwithimaginaryfriends.model.ChatModel;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public class ChatAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             viewHolder.txtCharacterName = view.findViewById(R.id.txtCharacterName);
-            viewHolder.txtMessage = view.findViewById(R.id.txtHeart);
+            viewHolder.txtMessage = view.findViewById(R.id.status_of_user);
             viewHolder.imgAvatar = view.findViewById(R.id.imgAvatar);
             view.setTag(viewHolder);
         }else {

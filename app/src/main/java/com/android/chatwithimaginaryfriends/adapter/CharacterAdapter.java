@@ -9,25 +9,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.model.Character;
-import com.android.chatwithimaginaryfriends.model.Heart;
+import com.android.chatwithimaginaryfriends.model.CharacterModel;
 
 import java.util.List;
 
 public class CharacterAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<Character> listCharacter;
+    private List<CharacterModel> listCharacterModel;
 
-    public CharacterAdapter(Context context, int layout, List<Character> listCharacter) {
+    public CharacterAdapter(Context context, int layout, List<CharacterModel> listCharacterModel) {
         this.context = context;
         this.layout = layout;
-        this.listCharacter = listCharacter;
+        this.listCharacterModel = listCharacterModel;
     }
 
     @Override
     public int getCount() {
-        return listCharacter.size();
+        return listCharacterModel.size();
     }
 
     @Override
@@ -58,9 +57,9 @@ public class CharacterAdapter extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        Character character = listCharacter.get(i);
-        viewHolder.txtCharacterName.setText(character.getCharacterName());
-        viewHolder.txtHeart.setText(character.getHeart());
+        CharacterModel characterModel = listCharacterModel.get(i);
+        viewHolder.txtCharacterName.setText(characterModel.getCharacterName());
+        viewHolder.txtHeart.setText(characterModel.getHeart());
 
         return view;
     }
