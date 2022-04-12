@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -31,4 +32,60 @@
         android:layout_centerInParent="true"
         android:src="@drawable/more_vert_24"
         android:background="@null"/>
+</RelativeLayout>-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="-5dp">
+
+        <TextView
+            android:id="@+id/txtHeartName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Name Display Here"
+            android:textColor="#0b0b0b"
+            android:textSize="20sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/txtHeartDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtHeartName"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:text="Status Displays here"
+            android:textColor="#6a6a6a"
+            android:textSize="12sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_below="@id/txtHeartDesc"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginRight="10dp"
+            android:background="#a6a6a6" />
+    </RelativeLayout>
+    <ImageButton
+        android:id="@+id/option_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        android:contentDescription="Option"
+        android:src="@drawable/more_vert_24" />
 </RelativeLayout>

@@ -26,10 +26,10 @@ public class HeartFragment extends ListFragment {
     }
 
     private void AddArrayHeart() {
-        listHeartModel.add(new HeartModel("Bot A", "Con bot A"));
-        listHeartModel.add(new HeartModel("Bot B", "Con bot B"));
-        listHeartModel.add(new HeartModel("Bot C", "Con bot C"));
-        listHeartModel.add(new HeartModel("Bot D", "Con bot D"));
-        listHeartModel.add(new HeartModel("Bot E", "Con bot E"));
+        listHeartModel.add(new HeartModel("Heart A", "Description heart A"));
+        listHeartModel.add(new HeartModel("Heart B", "Description heart B"));
+        listHeartModel.add(new HeartModel("Heart C", "Description heart C"));
+        listHeartModel.add(new HeartModel("Heart D", "Description heart D"));
+        listHeartModel.add(new HeartModel("Heart E", "Description heart E"));
     }
 }

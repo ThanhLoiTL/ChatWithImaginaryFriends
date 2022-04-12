@@ -38,6 +38,6 @@ public class ChatFragment extends ListFragment {
     }
     private void AddArrayChat() {
         listChat.add(new ChatModel("Brain Bot", "hello", false));
-        listChat.add(new ChatModel("Love Bot", "hahahahaha", false));
+        listChat.add(new ChatModel("Love Bot", "hahahahaha", false)); 
     }
 }

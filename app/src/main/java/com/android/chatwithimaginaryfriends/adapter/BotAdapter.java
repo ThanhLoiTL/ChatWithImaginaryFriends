@@ -5,40 +5,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.model.ChatModel;
+import com.android.chatwithimaginaryfriends.model.BotModel;
+import com.android.chatwithimaginaryfriends.model.HeartModel;
 
 import java.util.List;
 
 public class BotAdapter extends BaseAdapter {
     private Context context;
-    private List<ChatModel> listChat;
+    private int layout;
+    private List<BotModel> listBotModel;
 
-
-    public BotAdapter(Context context, List<ChatModel> listChat) {
+    public BotAdapter(Context context, int layout, List<BotModel> listBotModel) {
         this.context = context;
-        this.listChat = listChat;
+        this.layout = layout;
+        this.listBotModel = listBotModel;
     }
 
     @Override
     public int getCount() {
-        return listChat.size();
+        return listBotModel.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return listChat.get(i);
+        return listBotModel.get(i);
     }
 
     @Override
     public long getItemId(int i) {
         return i;
     }
-
     private class ViewHolder {
-        TextView message;
+        TextView txtBotName;
+        ImageView imgBot;
     }
 
     @Override
@@ -47,18 +50,15 @@ public class BotAdapter extends BaseAdapter {
         if(view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if(listChat.get(i).isSend()){
-                view = inflater.inflate(R.layout.user_msg_rv_item, null);
-            }else{
-                view = inflater.inflate(R.layout.bot_msg_rv_item, null);
-            }
-            viewHolder.message = view.findViewById(R.id.message);
+            view = inflater.inflate(layout, null);
+            viewHolder.txtBotName = view.findViewById(R.id.txtBotName);
             view.setTag(viewHolder);
-        }else{
+        }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        ChatModel chatModel = listChat.get(i);
-        viewHolder.message.setText(chatModel.getMessage());
+        BotModel botModel = listBotModel.get(i);
+        viewHolder.txtBotName.setText(botModel.getName());
+
         return view;
     }
 }

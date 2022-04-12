@@ -10,9 +10,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.adapter.BotAdapter;
+import com.android.chatwithimaginaryfriends.adapter.BotAPIAdapter;
 import com.android.chatwithimaginaryfriends.handle.HttpDataHandler;
-import com.android.chatwithimaginaryfriends.model.BotModel;
 import com.android.chatwithimaginaryfriends.model.ChatModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -43,7 +42,7 @@ public class ChatActivity extends AppCompatActivity {
                 String text = editMessage.getText().toString();
                 ChatModel chatModel = new ChatModel(text, true);
                 listChat.add(chatModel);
-                new BotAPI().execute(listChat);
+                new ChatActivity.BotAPI().execute(listChat);
                 editMessage.setText("");
             }
         });
@@ -64,11 +63,11 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             Gson gson = new Gson();
-            BotModel res = gson.fromJson(s, BotModel.class);
+            com.android.chatwithimaginaryfriends.model.BotAPI res = gson.fromJson(s, com.android.chatwithimaginaryfriends.model.BotAPI.class);
 
             ChatModel chatModel = new ChatModel(res.getCnt(),false);
             models.add(chatModel);
-            BotAdapter adapter = new BotAdapter(getApplicationContext(), models);
+            BotAPIAdapter adapter = new BotAPIAdapter(getApplicationContext(), models);
             listMessage.setAdapter(adapter);
         }
     }

@@ -6,37 +6,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.model.HeartModel;
+import com.android.chatwithimaginaryfriends.model.ChatModel;
+
 import java.util.List;
 
-public class HeartAdapter extends BaseAdapter {
+public class BotAPIAdapter extends BaseAdapter {
     private Context context;
-    private int layout;
-    private List<HeartModel> listHeartModel;
+    private List<ChatModel> listChat;
 
-    public HeartAdapter(Context context, int layout, List<HeartModel> listHeartModel) {
+
+    public BotAPIAdapter(Context context, List<ChatModel> listChat) {
         this.context = context;
-        this.layout = layout;
-        this.listHeartModel = listHeartModel;
+        this.listChat = listChat;
     }
 
     @Override
     public int getCount() {
-        return listHeartModel.size();
+        return listChat.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return listChat.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
+
     private class ViewHolder {
-        TextView txtHeartName, txtHeartDesc;
+        TextView message;
     }
 
     @Override
@@ -45,17 +47,18 @@ public class HeartAdapter extends BaseAdapter {
         if(view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(layout, null);
-            viewHolder.txtHeartName = view.findViewById(R.id.txtHeartName);
-            viewHolder.txtHeartDesc = view.findViewById(R.id.txtHeartDesc);
+            if(listChat.get(i).isSend()){
+                view = inflater.inflate(R.layout.user_msg_rv_item, null);
+            }else{
+                view = inflater.inflate(R.layout.bot_msg_rv_item, null);
+            }
+            viewHolder.message = view.findViewById(R.id.message);
             view.setTag(viewHolder);
-        }else {
+        }else{
             viewHolder = (ViewHolder) view.getTag();
         }
-        HeartModel heartModel = listHeartModel.get(i);
-        viewHolder.txtHeartName.setText(heartModel.getBotName());
-        viewHolder.txtHeartDesc.setText(heartModel.getDescription());
-
+        ChatModel chatModel = listChat.get(i);
+        viewHolder.message.setText(chatModel.getMessage());
         return view;
     }
 }
