@@ -65,6 +65,7 @@
             android:id="@+id/create_edit_interaction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/root"
             android:text="Creat and edit interaction"/>
     </LinearLayout>
 </RelativeLayout>
