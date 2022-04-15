@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.chatwithimaginaryfriends">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.ChatWithImaginaryFriends">
+        android:theme="@style/Theme.ChatWithImaginaryFriends"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.EditInteractionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.InteractionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.EditHeartActivity"
+            android:exported="false" />
         <activity
             android:name=".view.ChatActivity"
             android:exported="false" />

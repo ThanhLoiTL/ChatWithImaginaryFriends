@@ -1,18 +1,24 @@
 package com.android.chatwithimaginaryfriends.fragment;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
 import androidx.annotation.Nullable;
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.adapter.HeartAdapter;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
+import com.android.chatwithimaginaryfriends.view.EditHeartActivity;
+
 import java.util.ArrayList;
 
 public class HeartFragment extends ListFragment {
-    ArrayList<HeartModel> listHeartModel;
+    private final int CODE_HEART = 123;
+    public static ArrayList<HeartModel> listHeartModel;
     HeartAdapter heartAdapter;
 
     @Override
@@ -25,11 +31,20 @@ public class HeartFragment extends ListFragment {
         return view;
     }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        HeartModel heart = listHeartModel.get(position);
+        Intent intent = new Intent(getActivity(), EditHeartActivity.class);
+        intent.putExtra("HeartModel", heart);
+        startActivityForResult(intent, CODE_HEART);
+    }
+
     private void AddArrayHeart() {
-        listHeartModel.add(new HeartModel("Heart A", "Description heart A"));
-        listHeartModel.add(new HeartModel("Heart B", "Description heart B"));
-        listHeartModel.add(new HeartModel("Heart C", "Description heart C"));
-        listHeartModel.add(new HeartModel("Heart D", "Description heart D"));
-        listHeartModel.add(new HeartModel("Heart E", "Description heart E"));
+        listHeartModel.add(new HeartModel(0L, "Heart A", "Description heart A"));
+        listHeartModel.add(new HeartModel(1L, "Heart B", "Description heart B"));
+        listHeartModel.add(new HeartModel(2L, "Heart C", "Description heart C"));
+        listHeartModel.add(new HeartModel(3L, "Heart D", "Description heart D"));
+        listHeartModel.add(new HeartModel(4L, "Heart E", "Description heart E"));
     }
 }

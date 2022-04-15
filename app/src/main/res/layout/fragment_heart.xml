@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:contentDescription="Search"
         android:background="@null"
+        android:contentDescription="Search"
         android:padding="12dp"
         android:src="@drawable/ic_search_32"
         tools:ignore="SpeakableTextPresentCheck" />

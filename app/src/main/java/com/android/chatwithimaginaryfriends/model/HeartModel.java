@@ -1,20 +1,32 @@
 package com.android.chatwithimaginaryfriends.model;
 
-public class HeartModel {
-    private String botName;
+import java.io.Serializable;
+
+public class HeartModel implements Serializable {
+    private long id;
+    private String heartName;
     private String description;
 
-    public HeartModel(String name, String desc){
-        botName = name;
-        description = desc;
+    public HeartModel(long id, String heartName, String description){
+        this.id = id;
+        this.heartName = heartName;
+        this.description = description;
     }
 
-    public String getBotName() {
-        return botName;
+    public long getId() {
+        return id;
     }
 
-    public void setBotName(String botName) {
-        this.botName = botName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getHeartName() {
+        return heartName;
+    }
+
+    public void setHeartName(String heartName) {
+        this.heartName = heartName;
     }
 
     public String getDescription() {

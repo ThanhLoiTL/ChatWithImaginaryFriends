@@ -7,36 +7,36 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.model.HeartModel;
 import java.util.List;
 
-public class HeartAdapter extends BaseAdapter {
+
+public class WordAndReplyAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<HeartModel> listHeartModel;
+    private List<String> listWord;
 
-    public HeartAdapter(Context context, int layout, List<HeartModel> listHeartModel) {
+    public WordAndReplyAdapter(Context context, int layout, List<String> listWord) {
         this.context = context;
         this.layout = layout;
-        this.listHeartModel = listHeartModel;
+        this.listWord = listWord;
     }
 
     @Override
     public int getCount() {
-        return listHeartModel.size();
+        return listWord.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return listWord.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
     private class ViewHolder {
-        TextView heartName, heartDescription;
+        TextView triggerWord;
     }
 
     @Override
@@ -46,16 +46,14 @@ public class HeartAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            viewHolder.heartName = view.findViewById(R.id.heart_name);
-            viewHolder.heartDescription = view.findViewById(R.id.heart_description);
+            viewHolder.triggerWord = view.findViewById(R.id.word);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        HeartModel heartModel = listHeartModel.get(i);
-        viewHolder.heartName.setText(heartModel.getHeartName());
-        viewHolder.heartDescription.setText(heartModel.getDescription());
 
+        String word = listWord.get(i);
+        viewHolder.triggerWord.setText(word);
         return view;
     }
 }

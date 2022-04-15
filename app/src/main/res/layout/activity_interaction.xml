@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interaction"
+        android:textSize="24sp"
+        android:textColor="@color/root"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <ImageButton
+        android:id="@+id/btn_save_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@null"
+        android:contentDescription="Search"
+        android:padding="12dp"
+        android:src="@drawable/outline_save_alt_24"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_save_heart"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="When none of condition..."
+            android:textColor="@color/white"
+            android:background="@color/root"/>
+        <TextView
+            android:id="@+id/final_reply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Final reply"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/root"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="Interaction list"
+                android:textColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/btn_add_interaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@null"
+                android:contentDescription="Add Interaction"
+                android:padding="12dp"
+                android:src="@drawable/ic_add_white_24"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </RelativeLayout>
+        <FrameLayout
+            android:id="@+id/frameLayoutInteraction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</RelativeLayout>

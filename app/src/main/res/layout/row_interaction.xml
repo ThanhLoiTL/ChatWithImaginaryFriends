@@ -12,31 +12,30 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/heart_name"
+            android:id="@+id/trigger_words"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="Name Display Here"
+            android:text="Trigger words"
             android:textColor="#0b0b0b"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"/>
 
         <TextView
-            android:id="@+id/heart_description"
+            android:id="@+id/reply_pattern"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/heart_name"
+            android:layout_below="@id/trigger_words"
             android:layout_marginStart="15dp"
             android:layout_marginTop="3dp"
             android:text="Status Displays here"
             android:textColor="#6a6a6a"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0.2dp"
-            android:layout_below="@id/heart_description"
+            android:layout_below="@id/reply_pattern"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="19dp"
             android:layout_marginRight="10dp"
