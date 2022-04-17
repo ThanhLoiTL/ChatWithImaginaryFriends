@@ -6,29 +6,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.android.chatwithimaginaryfriends.R;
+
 import java.util.List;
 
 
-public class WordAndReplyAdapter extends BaseAdapter {
+public class ReplyAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<String> listWord;
+    public List<String> listReply;
 
-    public WordAndReplyAdapter(Context context, int layout, List<String> listWord) {
+    public ReplyAdapter(Context context, int layout, List<String> listReply) {
         this.context = context;
         this.layout = layout;
-        this.listWord = listWord;
+        this.listReply = listReply;
     }
 
     @Override
     public int getCount() {
-        return listWord.size();
+        return listReply.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return listWord.get(i);
+        return listReply.get(i);
     }
 
     @Override
@@ -36,7 +38,7 @@ public class WordAndReplyAdapter extends BaseAdapter {
         return i;
     }
     private class ViewHolder {
-        TextView triggerWord;
+        TextView replyPattern;
     }
 
     @Override
@@ -46,14 +48,14 @@ public class WordAndReplyAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            viewHolder.triggerWord = view.findViewById(R.id.word);
+            viewHolder.replyPattern = view.findViewById(R.id.word);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        String word = listWord.get(i);
-        viewHolder.triggerWord.setText(word);
+        String word = listReply.get(i);
+        viewHolder.replyPattern.setText(word);
         return view;
     }
 }

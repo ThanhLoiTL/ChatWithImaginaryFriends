@@ -1,16 +1,21 @@
 package com.android.chatwithimaginaryfriends.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
 import com.android.chatwithimaginaryfriends.R;
+import com.android.chatwithimaginaryfriends.dao.IInteractionDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.InteractionDAO;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.model.InteractionModel;
 
@@ -21,7 +26,9 @@ import java.util.List;
 public class InteractionAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<InteractionModel> listInteractionModel;
+    public List<InteractionModel> listInteractionModel;
+
+    IInteractionDAO interactionDAO;
 
     public InteractionAdapter(Context context, int layout, List<InteractionModel> listInteractionModel) {
         this.context = context;
@@ -45,6 +52,7 @@ public class InteractionAdapter extends BaseAdapter {
     }
     private class ViewHolder {
         TextView triggerWords, replyPattern;
+        ImageButton btnDeleteInteraction;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -57,25 +65,38 @@ public class InteractionAdapter extends BaseAdapter {
             view = inflater.inflate(layout, null);
             viewHolder.triggerWords = view.findViewById(R.id.trigger_words);
             viewHolder.replyPattern = view.findViewById(R.id.reply_pattern);
+            viewHolder.btnDeleteInteraction = view.findViewById(R.id.btn_delete_interaction);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-//        List<String> arrWords = new ArrayList<String>();
-//        arrWords.add("hello");
-//        arrWords.add("Hi");
-//        arrWords.add("Xin chao");
-//        String triggerWords = String.join(", ", arrWords);
-//        List<String> words = stringToArray(triggerWords);
+
 
         InteractionModel interactionModel = listInteractionModel.get(i);
         viewHolder.triggerWords.setText(interactionModel.getTriggerWord());
-        viewHolder.replyPattern.setText(interactionModel.getReplyWord());
+        if(interactionModel.getReplyWord() == null || interactionModel.getReplyWord() == ""){
+            viewHolder.replyPattern.setText("No reply words set");
+        }else{
+            viewHolder.replyPattern.setText(interactionModel.getReplyWord());
+        }
+
+        viewHolder.btnDeleteInteraction.setOnClickListener(v -> {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+            alertDialog.setTitle("Notification!");
+            alertDialog.setIcon(null);
+            alertDialog.setMessage("Do you want to delete?");
+            alertDialog.setPositiveButton("Yes", (dialogInterface, i1) -> {
+                interactionDAO = new InteractionDAO();
+                interactionDAO.deleteInteraction(interactionModel.getId());
+                listInteractionModel = interactionDAO.getAll();
+                this.notifyDataSetChanged();
+            });
+            alertDialog.setNegativeButton("No", (dialogInterface, i2) -> {
+
+            });
+            alertDialog.show();
+        });
+
         return view;
     }
-
-//    private List<String> stringToArray(String triggerWords) {
-//        List<String> arrString = Arrays.asList(triggerWords.split(","));
-//        return arrString;
-//    }
 }

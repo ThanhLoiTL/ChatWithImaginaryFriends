@@ -3,33 +3,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <RelativeLayout
-        android:id="@+id/relative_layout_interaction"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_layout_add_trigger_word">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/root"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:text="Interaction list"
+            android:text="Trigger words"
             android:textColor="@color/white" />
 
         <ImageButton
-            android:id="@+id/btn_add_interaction"
+            android:id="@+id/btn_add_trigger_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@null"
-            android:contentDescription="Add Interaction"
+            android:contentDescription="Add trigger word"
             android:padding="12dp"
-            android:src="@drawable/ic_add_white_24" />
+            android:src="@drawable/ic_add_white_24"/>
     </RelativeLayout>
+
     <ListView
         android:id="@android:id/list"
-        android:divider="@null"
-        android:layout_below="@+id/relative_layout_interaction"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_layout_add_trigger_word"
+        android:divider="@null" />
 </RelativeLayout>

@@ -43,12 +43,12 @@
     </RelativeLayout>
 
     <ImageButton
-        android:id="@+id/heart_option"
+        android:id="@+id/btn_delete_interaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:background="@null"
-        android:contentDescription="Option"
-        android:src="@drawable/more_vert_24" />
+        android:contentDescription="Delete interaction"
+        android:src="@drawable/ic_delete_outline_24" />
 </RelativeLayout>

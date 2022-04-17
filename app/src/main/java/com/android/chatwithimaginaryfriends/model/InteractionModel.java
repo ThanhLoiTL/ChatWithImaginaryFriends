@@ -17,6 +17,10 @@ public class InteractionModel implements Serializable {
         this.finalReply = finalReply;
     }
 
+    public InteractionModel() {
+
+    }
+
     public Long getId() {
         return id;
     }

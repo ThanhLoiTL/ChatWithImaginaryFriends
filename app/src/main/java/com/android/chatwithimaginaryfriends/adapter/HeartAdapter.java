@@ -1,19 +1,26 @@
 package com.android.chatwithimaginaryfriends.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
 import com.android.chatwithimaginaryfriends.R;
+import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import java.util.List;
 
 public class HeartAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<HeartModel> listHeartModel;
+    public List<HeartModel> listHeartModel;
+
+    IHeartDAO heartDAO;
 
     public HeartAdapter(Context context, int layout, List<HeartModel> listHeartModel) {
         this.context = context;
@@ -37,6 +44,7 @@ public class HeartAdapter extends BaseAdapter {
     }
     private class ViewHolder {
         TextView heartName, heartDescription;
+        ImageButton btnHeartDelete;
     }
 
     @Override
@@ -48,6 +56,7 @@ public class HeartAdapter extends BaseAdapter {
             view = inflater.inflate(layout, null);
             viewHolder.heartName = view.findViewById(R.id.heart_name);
             viewHolder.heartDescription = view.findViewById(R.id.heart_description);
+            viewHolder.btnHeartDelete = view.findViewById(R.id.heart_delete);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
@@ -55,6 +64,23 @@ public class HeartAdapter extends BaseAdapter {
         HeartModel heartModel = listHeartModel.get(i);
         viewHolder.heartName.setText(heartModel.getHeartName());
         viewHolder.heartDescription.setText(heartModel.getDescription());
+
+        viewHolder.btnHeartDelete.setOnClickListener(v -> {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+            alertDialog.setTitle("Notification!");
+            alertDialog.setIcon(null);
+            alertDialog.setMessage("Do you want to delete " + viewHolder.heartName.getText() + " ?");
+            alertDialog.setPositiveButton("Yes", (dialogInterface, i1) -> {
+                heartDAO = new HeartDAO();
+                heartDAO.deleteHeart(heartModel.getId());
+                listHeartModel = heartDAO.getAll();
+                this.notifyDataSetChanged();
+            });
+            alertDialog.setNegativeButton("No", (dialogInterface, i2) -> {
+
+            });
+            alertDialog.show();
+        });
 
         return view;
     }

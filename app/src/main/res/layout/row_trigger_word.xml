@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="10dp"
-        android:background="@drawable/recieverchatdrawble"
         android:id="@+id/layout_for_message">
 
         <TextView
@@ -23,6 +22,6 @@
             android:paddingBottom="7dp"
             android:text="Word"
             android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
     </RelativeLayout>
 </RelativeLayout>

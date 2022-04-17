@@ -13,6 +13,10 @@ public class HeartModel implements Serializable {
         this.description = description;
     }
 
+    public HeartModel() {
+
+    }
+
     public long getId() {
         return id;
     }

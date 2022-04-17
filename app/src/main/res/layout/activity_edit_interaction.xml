@@ -24,68 +24,18 @@
         android:background="@null"
         android:contentDescription="Search"
         android:padding="12dp"
-        android:src="@drawable/outline_save_alt_24"/>
+        android:src="@drawable/outline_save_alt_24" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_save_interaction"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/root"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="Trigger words"
-                android:textColor="@color/white" />
-
-            <ImageButton
-                android:id="@+id/btn_add_trigger_word"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:background="@null"
-                android:contentDescription="Add trigger word"
-                android:padding="12dp"
-                android:src="@drawable/ic_add_white_24"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </RelativeLayout>
-
         <FrameLayout
             android:id="@+id/frame_layout_trigger_word"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/root"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="Reply patterns"
-                android:textColor="@color/white" />
-            <ImageButton
-                android:id="@+id/btn_add_reply_pattern"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:background="@null"
-                android:contentDescription="Add reply"
-                android:padding="12dp"
-                android:src="@drawable/ic_add_white_24"
-                tools:ignore="SpeakableTextPresentCheck"/>
-        </RelativeLayout>
         <FrameLayout
             android:id="@+id/frame_layout_reply_pattern"
             android:layout_width="match_parent"

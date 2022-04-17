@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Reply Pattern"
+        android:textSize="24sp"
+        android:textColor="@color/root"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="12dp"/>
+    <EditText
+        android:id="@+id/txt_add_reply_pattern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please input a reply pattern"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <Button
+            android:id="@+id/btn_ok_reply_pattern"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="OK" />
+        <Button
+            android:id="@+id/btn_cancel_reply_pattern"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_ok_reply_pattern"
+            android:text="Cancel"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -11,16 +11,18 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.chatwithimaginaryfriends.R;
-import com.android.chatwithimaginaryfriends.fragment.HeartFragment;
+import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 
-import java.util.ArrayList;
 
 public class EditHeartActivity extends AppCompatActivity {
     private static int CODE_INTERACTION = 111;
     EditText heartName, heartDescription;
     Button createEditInteraction;
     ImageButton saveHeart;
+
+    IHeartDAO heartDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,22 +37,21 @@ public class EditHeartActivity extends AppCompatActivity {
         heartDescription.setText(heartModel.getDescription());
 
         saveHeart.setOnClickListener(view -> {
-            String name, description;
-            name = heartName.getText().toString().trim();
-            description = heartDescription.getText().toString().trim();
-            ArrayList<HeartModel> listHeart = HeartFragment.listHeartModel;
-            for (HeartModel heart: listHeart) {
-                if(heart.getId() == heartModel.getId()){
-                    heart.setHeartName(name);
-                    heart.setDescription(description);
-                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+            heartModel.setHeartName(heartName.getText().toString().trim());
+            heartModel.setDescription(heartDescription.getText().toString().trim());
+            heartDAO = new HeartDAO();
+            int isSuccess = heartDAO.updateHeart(heartModel);
+            if(isSuccess == 1){
+                Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
             }
+            finish();
         });
 
         createEditInteraction.setOnClickListener(view -> {
-            Intent intentInteraction = new Intent(this, InteractionActivity.class);
+            Intent intentInteraction = new Intent(EditHeartActivity.this, InteractionActivity.class);
+            intentInteraction.putExtra("HeartModel", heartModel);
             startActivityForResult(intentInteraction, CODE_INTERACTION);
         });
     }
