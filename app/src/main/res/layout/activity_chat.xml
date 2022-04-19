@@ -55,7 +55,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/cardviewofspeficuser"
-                android:text="Brain bot"
+                android:text="Em gai mua"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />

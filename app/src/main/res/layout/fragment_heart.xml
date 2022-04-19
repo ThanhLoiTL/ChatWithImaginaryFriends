@@ -37,10 +37,11 @@
         android:contentDescription="Add"
         android:padding="12dp"
         android:src="@drawable/ic_baseline_add_24" />
+
     <ListView
         android:id="@android:id/list"
-        android:divider="@null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_add_heart" />
+        android:layout_below="@id/btn_add_heart"
+        android:divider="@null" />
 </RelativeLayout>

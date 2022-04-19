@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
+        android:id="@+id/title_interaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Interaction"
@@ -28,19 +29,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_save_heart"
+        android:layout_below="@+id/title_interaction"
+        android:layout_margin="10dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="When none of condition..."
             android:textColor="@color/white"
-            android:background="@color/root"/>
+            android:background="@color/root"
+            android:padding="5dp"/>
         <TextView
             android:id="@+id/final_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Final reply"/>
+            android:text="Final reply"
+            android:padding="5dp"/>
         <FrameLayout
             android:id="@+id/frameLayoutInteraction"
             android:layout_width="match_parent"

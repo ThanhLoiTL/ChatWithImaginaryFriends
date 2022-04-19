@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -75,8 +76,8 @@ public class InteractionFragment extends ListFragment {
             dialog.setContentView(R.layout.dialog_add_interaction);
 
             EditText triggerWord = dialog.findViewById(R.id.txt_trigger_word);
-            Button btnOkInteraction = dialog.findViewById(R.id.btn_ok_interaction);
-            Button btnCancelInteraction = dialog.findViewById(R.id.btn_cancel_interaction);
+            TextView btnOkInteraction = dialog.findViewById(R.id.btn_ok_interaction);
+            TextView btnCancelInteraction = dialog.findViewById(R.id.btn_cancel_interaction);
 
             btnCancelInteraction.setOnClickListener(v -> {
                 dialog.dismiss();

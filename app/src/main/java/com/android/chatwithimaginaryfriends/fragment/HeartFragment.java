@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.android.chatwithimaginaryfriends.R;
@@ -69,8 +70,8 @@ public class HeartFragment extends ListFragment {
 
             EditText heartName = dialog.findViewById(R.id.heart_name);
             EditText heartDescription = dialog.findViewById(R.id.heart_description);
-            Button btnOkHeart = dialog.findViewById(R.id.btn_ok_heart);
-            Button btnCancelHeart = dialog.findViewById(R.id.btn_cancel_heart);
+            TextView btnOkHeart = dialog.findViewById(R.id.btn_ok_heart);
+            TextView btnCancelHeart = dialog.findViewById(R.id.btn_cancel_heart);
 
             btnCancelHeart.setOnClickListener(v -> {
                 dialog.dismiss();

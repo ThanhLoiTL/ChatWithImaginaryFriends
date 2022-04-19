@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -54,9 +55,9 @@ public class ReplyFragment extends ListFragment {
         dialog.setContentView(R.layout.dialog_update_reply_pattern);
 
         EditText txtUpdateReplyPattern = dialog.findViewById(R.id.txt_update_reply_pattern);
-        Button btnOkReplyPattern = dialog.findViewById(R.id.btn_ok_reply_pattern);
-        Button btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel_reply_pattern);
-        Button btnDeleteReplyPattern = dialog.findViewById(R.id.btn_delete_reply_pattern);
+        TextView btnOkReplyPattern = dialog.findViewById(R.id.btn_ok_reply_pattern);
+        TextView btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel_reply_pattern);
+        TextView btnDeleteReplyPattern = dialog.findViewById(R.id.btn_delete_reply_pattern);
 
         txtUpdateReplyPattern.setText(listReply.get(position));
 
@@ -107,8 +108,8 @@ public class ReplyFragment extends ListFragment {
             dialog.setContentView(R.layout.dialog_add_reply_pattern);
 
             EditText txtAddReplyPattern = dialog.findViewById(R.id.txt_add_reply_pattern);
-            Button btnOkReplyPattern = dialog.findViewById(R.id.btn_ok_reply_pattern);
-            Button btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel_reply_pattern);
+            TextView btnOkReplyPattern = dialog.findViewById(R.id.btn_ok_reply_pattern);
+            TextView btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel_reply_pattern);
 
             btnCancelReplyPattern.setOnClickListener(v -> {
                 dialog.dismiss();

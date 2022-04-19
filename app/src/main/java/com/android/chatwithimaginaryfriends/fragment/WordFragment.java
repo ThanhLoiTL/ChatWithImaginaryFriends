@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.android.chatwithimaginaryfriends.R;
@@ -51,9 +52,9 @@ public class WordFragment extends ListFragment {
         dialog.setContentView(R.layout.dialog_update_trigger_word);
 
         EditText txtUpdateTriggerWord = dialog.findViewById(R.id.txt_update_trigger_word);
-        Button btnOkTriggerWord = dialog.findViewById(R.id.btn_ok_trigger_word);
-        Button btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel_trigger_word);
-        Button btnDeleteTriggerWord = dialog.findViewById(R.id.btn_delete_trigger_word);
+        TextView btnOkTriggerWord = dialog.findViewById(R.id.btn_ok_trigger_word);
+        TextView btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel_trigger_word);
+        TextView btnDeleteTriggerWord = dialog.findViewById(R.id.btn_delete_trigger_word);
 
         txtUpdateTriggerWord.setText(listWord.get(position));
 
@@ -105,8 +106,8 @@ public class WordFragment extends ListFragment {
             dialog.setContentView(R.layout.dialog_add_trigger_word);
 
             EditText txtAddTriggerWord = dialog.findViewById(R.id.txt_add_trigger_word);
-            Button btnOkTriggerWord = dialog.findViewById(R.id.btn_ok_trigger_word);
-            Button btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel_trigger_word);
+            TextView btnOkTriggerWord = dialog.findViewById(R.id.btn_ok_trigger_word);
+            TextView btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel_trigger_word);
 
             btnCancelTriggerWord.setOnClickListener(v -> {
                 dialog.dismiss();

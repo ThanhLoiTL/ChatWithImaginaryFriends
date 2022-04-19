@@ -11,33 +11,45 @@
         android:textColor="@color/root"
         android:gravity="center"
         android:textStyle="bold"
-        android:padding="12dp"/>
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"/>
     <EditText
         android:id="@+id/heart_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Heart Name"/>
+        android:hint="Heart Name"
+        android:minHeight="48dp"
+        android:layout_margin="10dp"/>
     <EditText
         android:id="@+id/heart_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Heart description"/>
+        android:hint="Heart description"
+        android:minHeight="48dp"
+        android:layout_margin="10dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
-        <Button
+
+        <TextView
             android:id="@+id/btn_ok_heart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="OK"/>
-        <Button
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="100dp"
+            android:text="OK"
+            android:textColor="@color/root"
+            android:textStyle="bold" />
+        <TextView
             android:id="@+id/btn_cancel_heart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/btn_ok_heart"
-            android:text="Cancel"/>
+            android:layout_marginEnd="20dp"
+            android:text="CANCEL"
+            android:textColor="@color/root"
+            android:textStyle="bold"/>
     </RelativeLayout>
 
 </LinearLayout>

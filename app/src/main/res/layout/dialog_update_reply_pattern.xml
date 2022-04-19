@@ -11,6 +11,7 @@
         android:textColor="@color/root"
         android:gravity="center"
         android:textStyle="bold"
+        android:layout_marginBottom="20dp"
         android:padding="12dp"/>
 
     <EditText
@@ -18,36 +19,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Please input a reply pattern"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:layout_margin="10dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
 
-        <Button
+        <TextView
             android:id="@+id/btn_ok_reply_pattern"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="20dp"
             android:layout_toEndOf="@+id/btn_delete_reply_pattern"
             android:text="OK"
-            android:textSize="10sp" />
+            android:textColor="@color/root"
+            android:textStyle="bold"/>
 
-        <Button
+        <TextView
             android:id="@+id/btn_cancel_reply_pattern"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/btn_ok_reply_pattern"
-            android:text="Cancel"
-            android:textSize="10sp" />
+            android:text="CANCEL"
+            android:textColor="@color/root"
+            android:textStyle="bold"/>
 
-        <Button
+        <TextView
             android:id="@+id/btn_delete_reply_pattern"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"
-            android:textSize="10sp" />
+            android:text="DELETE"
+            android:textColor="@color/root"
+            android:textStyle="bold"/>
     </RelativeLayout>
 
 </LinearLayout>

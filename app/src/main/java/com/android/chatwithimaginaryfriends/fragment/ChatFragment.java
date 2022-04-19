@@ -37,7 +37,7 @@ public class ChatFragment extends ListFragment {
         startActivity(new Intent(getActivity(), ChatActivity.class));
     }
     private void AddArrayChat() {
-        listChat.add(new ChatModel("Brain Bot", "hello", false));
+        listChat.add(new ChatModel("Em Gai Mua", "hello", false));
         listChat.add(new ChatModel("Love Bot", "hahahahaha", false)); 
     }
 }

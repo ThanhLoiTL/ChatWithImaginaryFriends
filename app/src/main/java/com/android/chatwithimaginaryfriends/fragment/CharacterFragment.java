@@ -29,10 +29,7 @@ public class CharacterFragment extends ListFragment {
     }
 
     private void AddArrayCharacter() {
-        listCharacterModel.add(new CharacterModel("Character A", "Heart A", null));
+        listCharacterModel.add(new CharacterModel("Em Gai Mua", "Heart A", null));
         listCharacterModel.add(new CharacterModel("Character B", "Heart B", null));
-        listCharacterModel.add(new CharacterModel("Character C", "Heart C", null));
-        listCharacterModel.add(new CharacterModel("Character D", "Heart D", null));
-        listCharacterModel.add(new CharacterModel("Character E", "Heart E", null));
     }
 }

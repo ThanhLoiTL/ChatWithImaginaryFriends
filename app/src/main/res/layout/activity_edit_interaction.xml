@@ -4,16 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
+        android:id="@+id/title_trigger_reply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trigger and reply"
-        android:textSize="24sp"
-        android:textColor="@color/root"
-        android:textStyle="bold"
-        android:padding="12dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:padding="12dp"
+        android:text="Trigger and reply"
+        android:textColor="@color/root"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/btn_save_interaction"
@@ -28,16 +30,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_save_interaction"
+        android:layout_below="@+id/title_trigger_reply"
         android:orientation="vertical">
 
         <FrameLayout
+            android:layout_margin="15dp"
             android:id="@+id/frame_layout_trigger_word"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
         <FrameLayout
             android:id="@+id/frame_layout_reply_pattern"
+            android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

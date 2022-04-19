@@ -9,6 +9,7 @@
         android:text="Add Interaction"
         android:textSize="24sp"
         android:textColor="@color/root"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:textStyle="bold"
         android:padding="12dp"/>
@@ -16,23 +17,33 @@
         android:id="@+id/txt_trigger_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_margin="10dp"
         android:hint="Please input a trigger word"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
-        <Button
+
+        <TextView
             android:id="@+id/btn_ok_interaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="OK"/>
-        <Button
+            android:layout_marginRight="100dp"
+            android:text="OK"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/root"
+            android:textStyle="bold"/>
+
+        <TextView
             android:id="@+id/btn_cancel_interaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/btn_ok_interaction"
-            android:text="Cancel"/>
+            android:text="CANCEL"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/root"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </LinearLayout>

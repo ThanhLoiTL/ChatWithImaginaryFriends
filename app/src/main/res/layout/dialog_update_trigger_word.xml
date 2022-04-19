@@ -11,43 +11,49 @@
         android:textColor="@color/root"
         android:gravity="center"
         android:textStyle="bold"
-        android:padding="12dp"/>
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"/>
 
     <EditText
         android:id="@+id/txt_update_trigger_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Please input a trigger word"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:layout_margin="10dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
 
-        <Button
+        <TextView
             android:id="@+id/btn_ok_trigger_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="10dp"
-            android:textSize="10sp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="20dp"
             android:layout_toEndOf="@+id/btn_delete_trigger_word"
-            android:text="OK" />
+            android:text="OK"
+            android:textColor="@color/root"
+            android:textStyle="bold" />
 
-        <Button
+        <TextView
             android:id="@+id/btn_cancel_trigger_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
             android:layout_toRightOf="@+id/btn_ok_trigger_word"
-            android:text="Cancel" />
+            android:text="CANCEL"
+            android:textColor="@color/root"
+            android:textStyle="bold" />
 
-        <Button
+        <TextView
             android:id="@+id/btn_delete_trigger_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:text="Delete" />
+            android:text="DELETE"
+            android:textColor="@color/root"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
 </LinearLayout>
