@@ -9,6 +9,7 @@ import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
 import com.android.chatwithimaginaryfriends.database.Database;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
+import com.android.chatwithimaginaryfriends.model.InteractionModel;
 import com.android.chatwithimaginaryfriends.view.MainActivity;
 
 import java.util.ArrayList;
@@ -64,5 +65,21 @@ public class HeartDAO implements IHeartDAO {
         values.put(SystemConstant.COLUMN_HEART_DESCRIPTION, heart.getDescription());
         return db.update(SystemConstant.TABLE_HEART, values, SystemConstant.COLUMN_ID + " = ?",
                 new String[] { String.valueOf(heart.getId()) });
+    }
+
+    @SuppressLint("Range")
+    @Override
+    public HeartModel findOne(long id) {
+        SQLiteDatabase db = database.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + SystemConstant.TABLE_HEART + " WHERE "
+                + SystemConstant.COLUMN_ID + " = " + id;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        HeartModel heart = new HeartModel();
+        heart.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
+        heart.setHeartName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_NAME)));
+        heart.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_DESCRIPTION)));
+        return heart;
     }
 }

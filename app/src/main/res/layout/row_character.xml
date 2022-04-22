@@ -1,49 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
-
-    <ImageView
-        android:id="@+id/imgAvatar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:contentDescription="Avatar"
-        android:src="@drawable/person_24" />
-
-    <TextView
-        android:id="@+id/txtCharacterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/imgAvatar"
-        android:text="Character Name"
-        android:paddingStart="5dp"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/txtHeart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="5dp"
-        android:layout_below="@id/txtCharacterName"
-        android:layout_toEndOf="@id/imgAvatar"
-        android:text="Heart"
-        android:textSize="12sp" />
-
-    <ImageButton
-        android:id="@+id/option_character"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Option"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:src="@drawable/more_vert_24"
-        android:background="@null"/>
-</RelativeLayout>-->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -61,28 +16,40 @@
         android:paddingBottom="-5dp">
 
         <TextView
-            android:id="@+id/txtCharacterName"
+            android:id="@+id/character_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/card_view_Avatar"
             android:text="Character Name"
             android:textColor="#0b0b0b"
-            android:textSize="20sp"
-            android:textStyle="bold"></TextView>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtHeart"
+            android:id="@+id/heart_or_bot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtCharacterName"
+            android:layout_below="@id/character_name"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@id/card_view_Avatar"
-            android:text="Status Displays here"
+            android:text="Heart Or Bot"
             android:textColor="#6a6a6a"
-            android:textSize="12sp"></TextView>
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/character_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/heart_or_bot"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/card_view_Avatar"
+            android:text="description"
+            android:textColor="#6a6a6a"
+            android:textSize="12sp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_Avatar"
@@ -94,11 +61,11 @@
             app:cardCornerRadius="55dp">
 
             <ImageView
-                android:id="@+id/imgAvatar"
+                android:id="@+id/img_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background"></ImageView>
+                android:src="@drawable/ic_launcher_background" />
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
@@ -112,13 +79,16 @@
             android:backgroundTint="#a6a6a6" />
 
     </RelativeLayout>
+
     <ImageButton
-        android:id="@+id/option_character"
+        android:id="@+id/character_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:background="@null"
         android:contentDescription="Option"
-        android:src="@drawable/more_vert_24" />
+        android:minWidth="32dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_delete_outline_24" />
 </RelativeLayout>

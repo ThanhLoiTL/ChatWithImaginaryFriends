@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.android.chatwithimaginaryfriends">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <application
-        xmlns:tools="http://schemas.android.com/tools"
+    <application xmlns:tools="http://schemas.android.com/tools"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatWithImaginaryFriends"
-        tools:replace="allowBackup,supportsRtl"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
-        android:usesCleartextTraffic="true">
+        tools:replace="allowBackup,supportsRtl">
+        <activity
+            android:name=".view.EditCharacterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AddCharacterActivity"
+            android:exported="false" />
         <activity
             android:name=".view.EditInteractionActivity"
             android:exported="false" />

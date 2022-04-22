@@ -22,6 +22,18 @@ public class Database extends SQLiteOpenHelper {
             + SystemConstant.COLUMN_FINAL_REPLY +" TEXT, "
             + SystemConstant.COLUMN_TRIGGER_WORD +" TEXT, "+ SystemConstant.COLUMN_REPLY_PATTERN +" TEXT);";
 
+    private static final String CREATE_TABLE_CHARACTER = "CREATE TABLE "
+            + SystemConstant.TABLE_CHARACTER + "(" + SystemConstant.COLUMN_ID
+            + " INTEGER PRIMARY KEY AUTOINCREMENT,"+ SystemConstant.COLUMN_CHAR_NAME + " TEXT, "
+            + SystemConstant.COLUMN_CHAR_AVATAR +" BLOB, "
+            + SystemConstant.COLUMN_CHAR_HEART +" INTEGER, "+ SystemConstant.COLUMN_CHAR_BOT+" INTEGER, "
+            + SystemConstant.COLUMN_CHAR_SHORT_DESCRIPTION+" TEXT, "
+            + SystemConstant.COLUMN_CHAR_GENDER +" TEXT, "
+            + SystemConstant.COLUMN_CHAR_BIRTHDAY+" TEXT, "
+            + SystemConstant.COLUMN_CHAR_HEIGHT+" REAL, "
+            + SystemConstant.COLUMN_CHAR_WEIGHT+" REAL, "
+            + SystemConstant.COLUMN_CHAR_ZODIAC+" TEXT, "
+            + SystemConstant.COLUMN_CHAR_ADDRESS+" TEXT);";
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -41,12 +53,14 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_HEART);
         sqLiteDatabase.execSQL(CREATE_TABLE_INTERACTION);
+        sqLiteDatabase.execSQL(CREATE_TABLE_CHARACTER);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_INTERACTION);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_HEART);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_CHARACTER);
         onCreate(sqLiteDatabase);
     }
 }

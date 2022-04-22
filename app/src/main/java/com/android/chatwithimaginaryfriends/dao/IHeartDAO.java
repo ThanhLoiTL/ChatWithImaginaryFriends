@@ -9,4 +9,5 @@ public interface IHeartDAO {
     List<HeartModel> getAll();
     void deleteHeart(long id);
     int updateHeart(HeartModel heartModel);
+    HeartModel findOne(long id);
 }

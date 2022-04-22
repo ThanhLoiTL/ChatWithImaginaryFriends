@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Character Type"
+        android:textSize="24sp"
+        android:textColor="@color/root"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/choose_heart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HEART (Make All By Myself)"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/choose_ai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AI"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/btn_cancel_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="CANCEL"
+        android:textColor="@color/root"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:layout_gravity="right"/>
+
+</LinearLayout>
