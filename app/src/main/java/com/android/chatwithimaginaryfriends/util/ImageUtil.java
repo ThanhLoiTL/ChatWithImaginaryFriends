@@ -8,11 +8,11 @@ import android.widget.ImageView;
 import java.io.ByteArrayOutputStream;
 
 public class ImageUtil {
-    public static byte[] toByteArray(ImageView img){
+    public static byte[] bitmapToByteArray(ImageView img){
         BitmapDrawable bitmapDrawable = (BitmapDrawable) img.getDrawable();
         Bitmap bitmap = bitmapDrawable.getBitmap();
         ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArray);
         return byteArray.toByteArray();
     }
     public static Bitmap byteToBitmap(byte[] img) {

@@ -120,7 +120,7 @@ public class AddCharacterActivity extends AppCompatActivity {
                 characterModel.setWeight(Double.parseDouble(_weight));
                 characterModel.setAddress(_address);
                 characterModel.setZodiac(_zodiac);
-                characterModel.setAvatar(ImageUtil.toByteArray(imgAvatar));
+                characterModel.setAvatar(ImageUtil.bitmapToByteArray(imgAvatar));
                 if(characterType.equals("AI")){
                     characterModel.setBot(idAi);
                 }else if(characterType.equals("HEART")){

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -27,6 +28,7 @@ import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
+import com.android.chatwithimaginaryfriends.util.ImageUtils;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -105,7 +107,7 @@ public class EditCharacterActivity extends AppCompatActivity {
         }
 
         imgAvatar.setOnClickListener(view -> {
-            Intent intentImage = new Intent(Intent.ACTION_PICK);
+            Intent intentImage = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intentImage.setType("image/*");
             startActivityForResult(intentImage, REQUEST_CODE_FOLDER);
         });
@@ -132,7 +134,7 @@ public class EditCharacterActivity extends AppCompatActivity {
                 character.setWeight(Double.parseDouble(_weight));
                 character.setAddress(_address);
                 character.setZodiac(_zodiac);
-                character.setAvatar(ImageUtil.toByteArray(imgAvatar));
+                character.setAvatar(ImageUtil.bitmapToByteArray(imgAvatar));
                 int isSuccess = characterDAO.updateCharacter(character);
                 if(isSuccess == 1){
                     Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
@@ -149,10 +151,12 @@ public class EditCharacterActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null){
             Uri uri = data.getData();
+            InputStream inputStream = null;
             try {
-                InputStream inputStream = getContentResolver().openInputStream(uri);
+                inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 imgAvatar.setImageBitmap(bitmap);
+                //Bitmap bitmap = ImageUtils.getInstant().getCompressedBitmap(uri.getPath());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
