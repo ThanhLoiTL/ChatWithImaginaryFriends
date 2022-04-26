@@ -1,8 +1,17 @@
 package com.android.chatwithimaginaryfriends.view;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,8 +25,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.adapter.ComboBoxHeartAdapter;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
@@ -27,13 +34,15 @@ import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class EditCharacterActivity extends AppCompatActivity {
-    private final int REQUEST_CODE_FOLDER = 303;
+public class AddEditCharacterActivity extends AppCompatActivity {
+    private final int REQUEST_CODE_FOLDER = 666;
+    private final int REQUEST_CODE_EXTERNAL_STO = 345;
 
     private Spinner spnTypeCharacter;
     private ComboBoxHeartAdapter comboBoxHeartAdapter;
@@ -44,28 +53,44 @@ public class EditCharacterActivity extends AppCompatActivity {
     List<HeartModel> listHeart;
     IHeartDAO heartDAO;
     ICharacterDAO characterDAO;
+    HeartModel heartModel;
+    CharacterModel character;
 
+
+    @SuppressLint("IntentReset")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_add_character);
-        init();
-        Intent intent = getIntent();
+
         heartDAO = new HeartDAO();
         characterDAO = new CharacterDAO();
 
-        CharacterModel character = (CharacterModel) intent.getSerializableExtra("CharacterModel");
+        init();
+
+        Intent intent = getIntent();
+        String characterType = intent.getStringExtra("CHARACTER_TYPE");
+        character = (CharacterModel) intent.getSerializableExtra("CharacterModel");
+        character = (character == null) ? new CharacterModel() : (CharacterModel) intent.getSerializableExtra("CharacterModel");
+
         setView(character);
-        if(character.getHeart() != 0) {
-            typeCharacter.setText("Heart");
+
+        characterType = "HEART";
+        if(characterType == "HEART" || character.getHeart() != 0){
             listHeart = heartDAO.getAll();
+            typeCharacter.setText("Heart");
+
+            //set ComboBox
             comboBoxHeartAdapter = new ComboBoxHeartAdapter(this, R.layout.item_selected, listHeart);
             spnTypeCharacter.setAdapter(comboBoxHeartAdapter);
 
-            HeartModel heartModel = heartDAO.findOne(character.getHeart());
-            selectValue(spnTypeCharacter, heartModel);
+            //auto fill type when edit
+            if(character.getId() != null){
+                heartModel = heartDAO.findOne(character.getHeart());
+                selectValue(spnTypeCharacter, heartModel);
+            }
 
             spnTypeCharacter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -77,30 +102,20 @@ public class EditCharacterActivity extends AppCompatActivity {
                 public void onNothingSelected(AdapterView<?> adapterView) {
                 }
             });
-        }else if(character.getBot() != 0) {
-            listHeart = heartDAO.getAll();
-            typeCharacter.setText("AI");
-            comboBoxHeartAdapter = new ComboBoxHeartAdapter(this, R.layout.item_selected, listHeart);
-            spnTypeCharacter.setAdapter(comboBoxHeartAdapter);
-            spnTypeCharacter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    character.setBot(comboBoxHeartAdapter.getItem(i).getId());
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
+//        } else if(character.getBot() != 0 || characterType == "AI") {
+//            listHeart = heartDAO.getAll();
+//            typeCharacter.setText("AI");
+//            //update later
         }
 
         imgAvatar.setOnClickListener(view -> {
             Intent intentImage = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intentImage.setType("image/*");
             startActivityForResult(intentImage, REQUEST_CODE_FOLDER);
+            if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(AddEditCharacterActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_EXTERNAL_STO);
+            }
         });
-
 
         btnSaveCharacter.setOnClickListener(v -> {
             String _name = characterName.getText().toString();
@@ -113,7 +128,7 @@ public class EditCharacterActivity extends AppCompatActivity {
             String _zodiac = zodiac.getText().toString();
 
             if(_name.isEmpty() || _short_description.isEmpty() || _gender.isEmpty() || _birthday.isEmpty() || _height.isEmpty() ||
-            _weight.isEmpty() || _address.isEmpty() || _zodiac.isEmpty()){
+                    _weight.isEmpty() || _address.isEmpty() || _zodiac.isEmpty()){
                 Toast.makeText(v.getContext(), "Fill All Properties", Toast.LENGTH_LONG).show();
             }else{
                 character.setName(_name);
@@ -125,16 +140,31 @@ public class EditCharacterActivity extends AppCompatActivity {
                 character.setAddress(_address);
                 character.setZodiac(_zodiac);
                 character.setAvatar(ImageUtil.bitmapToByteArray(imgAvatar));
-                int isSuccess = characterDAO.updateCharacter(character);
-                if(isSuccess == 1){
-                    Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
+
+                if(character.getId() == null){
+                    Long id = characterDAO.addCharacter(character);
+                    if(id == null) {
+                        Toast.makeText(v.getContext(), "Add failed", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    int isSuccess = characterDAO.updateCharacter(character);
+                    if(isSuccess == 1){
+                        Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 finish();
             }
+
         });
-   }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -145,6 +175,7 @@ public class EditCharacterActivity extends AppCompatActivity {
             try {
                 inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                //imgAvatar.setImageBitmap(ImageUtil.resizeImage(bitmap, AddEditCharacterActivity.this));
                 imgAvatar.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -160,21 +191,31 @@ public class EditCharacterActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void setView(CharacterModel character) {
-        characterName.setText(character.getName());
-        shortDescription.setText(character.getShortDescription());
-        gender.setText(character.getGender());
-        birthday.setText(character.getBirthday());
-        height.setText(String.valueOf(character.getHeight()));
-        weight.setText(String.valueOf(character.getWeight()));
-        address.setText(character.getAddress());
-        zodiac.setText(character.getZodiac());
-        if(ImageUtil.byteToBitmap(character.getAvatar()) != null){
+        if(character.getId() != null){
+            characterName.setText(character.getName());
+            shortDescription.setText(character.getShortDescription());
+            gender.setText(character.getGender());
+            birthday.setText(character.getBirthday());
+            height.setText(String.valueOf(character.getHeight()));
+            weight.setText(String.valueOf(character.getWeight()));
+            address.setText(character.getAddress());
+            zodiac.setText(character.getZodiac());
             imgAvatar.setImageBitmap(ImageUtil.byteToBitmap(character.getAvatar()));
         }else{
-            imgAvatar.setImageResource(R.drawable.ic_baseline_person_24);
+            imgAvatar.setImageBitmap(((BitmapDrawable)getResources().getDrawable(R.drawable.ic_person_round)).getBitmap());
         }
+    }
 
+    private void selectValue(Spinner spinner, HeartModel value) {
+        for (int i = 0; i < spinner.getCount(); i++) {
+            HeartModel heart = (HeartModel) spinner.getItemAtPosition(i);
+            if (value.getId() == heart.getId()) {
+                spinner.setSelection(i);
+                break;
+            }
+        }
     }
 
     private void init() {
@@ -190,15 +231,5 @@ public class EditCharacterActivity extends AppCompatActivity {
         weight = findViewById(R.id.weight);
         address = findViewById(R.id.address);
         zodiac = findViewById(R.id.zodiac);
-    }
-
-    private void selectValue(Spinner spinner, HeartModel value) {
-        for (int i = 0; i < spinner.getCount(); i++) {
-            HeartModel heart = (HeartModel) spinner.getItemAtPosition(i);
-            if (value.getId() == heart.getId()) {
-                spinner.setSelection(i);
-                break;
-            }
-        }
     }
 }

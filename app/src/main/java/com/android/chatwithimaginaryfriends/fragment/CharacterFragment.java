@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,7 @@ import com.android.chatwithimaginaryfriends.adapter.CharacterAdapter;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.CharacterDAO;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
-import com.android.chatwithimaginaryfriends.view.AddCharacterActivity;
-import com.android.chatwithimaginaryfriends.view.EditCharacterActivity;
+import com.android.chatwithimaginaryfriends.view.AddEditCharacterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +49,15 @@ public class CharacterFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Intent intent = new Intent(v.getContext(), EditCharacterActivity.class);
-        CharacterModel character = listCharacterModel.get(position);
-        intent.putExtra("CharacterModel", character);
-        startActivityForResult(intent, CODE_CHARACTER);
+        try{
+            Intent intent = new Intent(v.getContext(), AddEditCharacterActivity.class);
+            CharacterModel character = listCharacterModel.get(position);
+            intent.putExtra("CharacterModel", character);
+            startActivityForResult(intent, CODE_CHARACTER);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -83,17 +88,14 @@ public class CharacterFragment extends ListFragment {
             TextView btnCancelCharacter = dialog.findViewById(R.id.btn_cancel_character);
 
             chooseHeart.setOnClickListener(v -> {
-                Intent intent = new Intent(view.getContext(), AddCharacterActivity.class);
+                Intent intent = new Intent(view.getContext(), AddEditCharacterActivity.class);
                 intent.putExtra("CHARACTER_TYPE", "HEART");
                 dialog.dismiss();
                 startActivityForResult(intent, CODE_CHARACTER);
             });
 
             chooseAi.setOnClickListener(v-> {
-                Intent intent = new Intent(view.getContext(), AddCharacterActivity.class);
-                intent.putExtra("CHARACTER_TYPE", "AI");
-                startActivityForResult(intent, CODE_CHARACTER);
-                dialog.dismiss();
+
             });
 
             btnCancelCharacter.setOnClickListener(v -> {

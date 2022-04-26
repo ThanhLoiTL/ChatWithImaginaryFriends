@@ -6,8 +6,8 @@ public class CharacterModel implements Serializable {
     private Long id;
     private String name;
     private byte[] avatar;
-    private Long heart;
-    private Long bot;
+    private long heart;
+    private long bot;
     private String shortDescription;
     private String gender;
     private String birthday;
@@ -44,7 +44,7 @@ public class CharacterModel implements Serializable {
         this.avatar = avatar;
     }
 
-    public Long getHeart() {
+    public long getHeart() {
         return heart;
     }
 
@@ -52,7 +52,7 @@ public class CharacterModel implements Serializable {
         this.heart = heart;
     }
 
-    public Long getBot() {
+    public long getBot() {
         return bot;
     }
 
