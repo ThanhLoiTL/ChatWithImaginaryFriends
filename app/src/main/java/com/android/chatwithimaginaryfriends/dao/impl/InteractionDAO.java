@@ -31,6 +31,7 @@ public class InteractionDAO implements IInteractionDAO {
         return id;
     }
 
+
     @SuppressLint("Range")
     @Override
     public List<InteractionModel> getAll() {
