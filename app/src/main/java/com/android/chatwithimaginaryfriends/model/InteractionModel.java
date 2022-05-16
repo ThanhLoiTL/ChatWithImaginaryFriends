@@ -7,14 +7,12 @@ public class InteractionModel implements Serializable {
     private Long idHeart;
     private String triggerWord;
     private String replyWord;
-    private String finalReply;
 
-    public InteractionModel(Long id, Long idHeart, String triggerWord, String replyWord, String finalReply) {
+    public InteractionModel(Long id, Long idHeart, String triggerWord, String replyWord) {
         this.id = id;
         this.idHeart = idHeart;
         this.triggerWord = triggerWord;
         this.replyWord = replyWord;
-        this.finalReply = finalReply;
     }
 
     public InteractionModel() {
@@ -53,11 +51,4 @@ public class InteractionModel implements Serializable {
         this.replyWord = replyWord;
     }
 
-    public String getFinalReply() {
-        return finalReply;
-    }
-
-    public void setFinalReply(String finalReply) {
-        this.finalReply = finalReply;
-    }
 }

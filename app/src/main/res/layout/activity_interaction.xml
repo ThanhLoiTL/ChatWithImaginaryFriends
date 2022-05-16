@@ -35,16 +35,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="When none of condition..."
+            android:text="Final reply"
             android:textColor="@color/white"
-            android:background="@color/root"
-            android:padding="5dp"/>
+            android:textSize="16dp"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/background_title" />
         <TextView
             android:id="@+id/final_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Final reply"
-            android:padding="5dp"/>
+            android:layout_margin="10dp"
+            android:padding="10dp"/>
         <FrameLayout
             android:id="@+id/frameLayoutInteraction"
             android:layout_width="match_parent"

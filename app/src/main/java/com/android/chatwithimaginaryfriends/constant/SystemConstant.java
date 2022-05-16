@@ -24,4 +24,16 @@ public class SystemConstant {
     public static final String COLUMN_CHAR_WEIGHT = "weight";
     public static final String COLUMN_CHAR_ZODIAC = "zodiac";
     public static final String COLUMN_CHAR_ADDRESS = "address";
+
+    public static final String TABLE_CHAT = "chats";
+    public static final String COLUMN_CHAT_CHARACTER_ID = "character_id";
+    public static final String COLUMN_CHAT_MESSAGE = "message";
+    public static final String COLUMN_CHAT_TIME = "time";
+    public static final String COLUMN_CHAT_IS_SEND = "is_send";
+
+    public static final String TABLE_BOT = "bots";
+    public static final String COLUMN_BOT_NAME = "name";
+    public static final String COLUMN_BOT_DESCRIPTION = "description";
+    public static final String COLUMN_BOT_AVATAR = "avatar";
+    public static final String COLUMN_BOT_URL = "url";
 }

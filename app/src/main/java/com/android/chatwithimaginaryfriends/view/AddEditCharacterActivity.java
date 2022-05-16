@@ -26,11 +26,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.chatwithimaginaryfriends.R;
+import com.android.chatwithimaginaryfriends.adapter.ComboBoxBotAdapter;
 import com.android.chatwithimaginaryfriends.adapter.ComboBoxHeartAdapter;
+import com.android.chatwithimaginaryfriends.dao.IBotDAO;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.BotDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.CharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
+import com.android.chatwithimaginaryfriends.model.BotModel;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
@@ -46,15 +50,19 @@ public class AddEditCharacterActivity extends AppCompatActivity {
 
     private Spinner spnTypeCharacter;
     private ComboBoxHeartAdapter comboBoxHeartAdapter;
+    private ComboBoxBotAdapter comboBoxBotAdapter;
     private TextView typeCharacter;
     private ImageButton btnSaveCharacter;
     private ImageView imgAvatar;
     private EditText characterName, shortDescription, gender, birthday, height, weight, zodiac, address;
-    List<HeartModel> listHeart;
-    IHeartDAO heartDAO;
-    ICharacterDAO characterDAO;
-    HeartModel heartModel;
-    CharacterModel character;
+    private List<HeartModel> listHeart;
+    private List<BotModel> listBot;
+    private IHeartDAO heartDAO;
+    private IBotDAO botDAO;
+    private ICharacterDAO characterDAO;
+    private HeartModel heartModel;
+    private BotModel botModel;
+    private CharacterModel character;
 
 
     @SuppressLint("IntentReset")
@@ -67,18 +75,19 @@ public class AddEditCharacterActivity extends AppCompatActivity {
 
         heartDAO = new HeartDAO();
         characterDAO = new CharacterDAO();
+        botDAO = new BotDAO();
 
         init();
 
         Intent intent = getIntent();
         String characterType = intent.getStringExtra("CHARACTER_TYPE");
+        characterType = (characterType==null) ? "EMPTY" :intent.getStringExtra("CHARACTER_TYPE");
         character = (CharacterModel) intent.getSerializableExtra("CharacterModel");
         character = (character == null) ? new CharacterModel() : (CharacterModel) intent.getSerializableExtra("CharacterModel");
 
         setView(character);
 
-        characterType = "HEART";
-        if(characterType == "HEART" || character.getHeart() != 0){
+        if(characterType.compareToIgnoreCase("HEART") == 0 || character.getHeart() != 0){
             listHeart = heartDAO.getAll();
             typeCharacter.setText("Heart");
 
@@ -102,10 +111,26 @@ public class AddEditCharacterActivity extends AppCompatActivity {
                 public void onNothingSelected(AdapterView<?> adapterView) {
                 }
             });
-//        } else if(character.getBot() != 0 || characterType == "AI") {
-//            listHeart = heartDAO.getAll();
-//            typeCharacter.setText("AI");
-//            //update later
+        } else if(character.getBot() != 0 || characterType.compareToIgnoreCase("BOT")==0) {
+            listBot = botDAO.getAll();
+            typeCharacter.setText("AI");
+            comboBoxBotAdapter = new ComboBoxBotAdapter(this, R.layout.item_selected, listBot);
+            spnTypeCharacter.setAdapter(comboBoxBotAdapter);
+
+            if(character.getId() != null){
+                botModel = botDAO.findOne(character.getBot());
+                selectValue(spnTypeCharacter, botModel);
+            }
+            spnTypeCharacter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    character.setBot(comboBoxBotAdapter.getItem(i).getId());
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
         }
 
         imgAvatar.setOnClickListener(view -> {
@@ -128,7 +153,7 @@ public class AddEditCharacterActivity extends AppCompatActivity {
             String _zodiac = zodiac.getText().toString();
 
             if(_name.isEmpty() || _short_description.isEmpty() || _gender.isEmpty() || _birthday.isEmpty() || _height.isEmpty() ||
-                    _weight.isEmpty() || _address.isEmpty() || _zodiac.isEmpty()){
+                    _weight.isEmpty() || _address.isEmpty() || _zodiac.isEmpty() || (character.getBot() == 0 && character.getHeart() == 0)){
                 Toast.makeText(v.getContext(), "Fill All Properties", Toast.LENGTH_LONG).show();
             }else{
                 character.setName(_name);
@@ -212,6 +237,15 @@ public class AddEditCharacterActivity extends AppCompatActivity {
         for (int i = 0; i < spinner.getCount(); i++) {
             HeartModel heart = (HeartModel) spinner.getItemAtPosition(i);
             if (value.getId() == heart.getId()) {
+                spinner.setSelection(i);
+                break;
+            }
+        }
+    }
+    private void selectValue(Spinner spinner, BotModel value) {
+        for (int i = 0; i < spinner.getCount(); i++) {
+            BotModel bot = (BotModel) spinner.getItemAtPosition(i);
+            if (value.getId() == bot.getId()) {
                 spinner.setSelection(i);
                 break;
             }

@@ -9,14 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.chatwithimaginaryfriends.R;
+import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
+import com.android.chatwithimaginaryfriends.dao.IChatDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.CharacterDAO;
+import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.ChatModel;
+import com.android.chatwithimaginaryfriends.util.ImageUtil;
 
 import java.util.List;
 
 public class ChatAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<ChatModel> listChat;
+    public List<ChatModel> listChat;
+
+    private ICharacterDAO characterDAO;
 
     public ChatAdapter(Context context, int layout, List<ChatModel> listChat) {
         this.context = context;
@@ -46,20 +53,23 @@ public class ChatAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
+        characterDAO = new CharacterDAO();
         if(view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             viewHolder.txtCharacterName = view.findViewById(R.id.txtCharacterName);
-            viewHolder.txtMessage = view.findViewById(R.id.status_of_user);
+            viewHolder.txtMessage = view.findViewById(R.id.latest_message);
             viewHolder.imgAvatar = view.findViewById(R.id.imgAvatar);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
         ChatModel chatModel = listChat.get(i);
-        viewHolder.txtCharacterName.setText(chatModel.getReceiverName());
+        CharacterModel character = characterDAO.findOne(chatModel.getCharterId());
+        viewHolder.txtCharacterName.setText(character.getName());
         viewHolder.txtMessage.setText(chatModel.getMessage());
+        viewHolder.imgAvatar.setImageBitmap(ImageUtil.byteToBitmap(character.getAvatar()));
 
         return view;
     }

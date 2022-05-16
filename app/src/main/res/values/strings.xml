@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">HULO</string>
     <string name="action_heart">HEART</string>
     <string name="action_character">CHARACTER</string>
     <string name="action_chat">CHAT</string>
     <string name="action_setting">SETTING</string>
     <string name="action_bot">BOT</string>
-
+    <string name="type_a_message">Type a message...</string>
 </resources>

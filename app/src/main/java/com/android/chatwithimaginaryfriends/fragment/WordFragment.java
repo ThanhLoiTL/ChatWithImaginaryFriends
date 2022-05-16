@@ -2,6 +2,8 @@ package com.android.chatwithimaginaryfriends.fragment;
 
 import android.app.Dialog;
 import android.app.ListFragment;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,13 +50,18 @@ public class WordFragment extends ListFragment {
     public void onListItemClick(ListView l, View view, int position, long id) {
         super.onListItemClick(l, view, position, id);
         Dialog dialog = new Dialog(view.getContext());
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_update_trigger_word);
+        dialog.setContentView(R.layout.dialog_update);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+        TextView title = dialog.findViewById(R.id.title);
+        title.setText("Update Trigger Word");
 
-        EditText txtUpdateTriggerWord = dialog.findViewById(R.id.txt_update_trigger_word);
-        TextView btnOkTriggerWord = dialog.findViewById(R.id.btn_ok_trigger_word);
-        TextView btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel_trigger_word);
-        TextView btnDeleteTriggerWord = dialog.findViewById(R.id.btn_delete_trigger_word);
+        EditText txtUpdateTriggerWord = dialog.findViewById(R.id.txt_input);
+        txtUpdateTriggerWord.setHint("Please input a trigger word");
+        TextView btnOkTriggerWord = dialog.findViewById(R.id.btn_ok);
+        TextView btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel);
+        TextView btnDeleteTriggerWord = dialog.findViewById(R.id.btn_delete);
 
         txtUpdateTriggerWord.setText(listWord.get(position));
 
@@ -102,12 +109,16 @@ public class WordFragment extends ListFragment {
     private void addTriggerWord() {
         btnAddTriggerWord.setOnClickListener(view -> {
             Dialog dialog = new Dialog(view.getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.dialog_add_trigger_word);
-
-            EditText txtAddTriggerWord = dialog.findViewById(R.id.txt_add_trigger_word);
-            TextView btnOkTriggerWord = dialog.findViewById(R.id.btn_ok_trigger_word);
-            TextView btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel_trigger_word);
+            dialog.setContentView(R.layout.dialog_add);
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+            TextView title = dialog.findViewById(R.id.title);
+            title.setText("Add Trigger Word");
+            EditText txtAddTriggerWord = dialog.findViewById(R.id.txt_input);
+            txtAddTriggerWord.setHint("Please input a trigger word");
+            TextView btnOkTriggerWord = dialog.findViewById(R.id.btn_ok);
+            TextView btnCancelTriggerWord = dialog.findViewById(R.id.btn_cancel);
 
             btnCancelTriggerWord.setOnClickListener(v -> {
                 dialog.dismiss();

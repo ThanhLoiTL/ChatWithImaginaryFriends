@@ -33,26 +33,35 @@
         android:padding="12dp"
         android:src="@drawable/outline_save_alt_24"
         tools:ignore="SpeakableTextPresentCheck" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_character"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_title"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Basic information"
             android:textColor="@color/white"
-            android:background="@color/root"
-            android:padding="5dp"/>
+            android:textSize="@dimen/text_size" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_Avatar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="55dp">
 
             <ImageView
@@ -62,167 +71,193 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/image_person" />
         </androidx.cardview.widget.CardView>
+
         <EditText
             android:id="@+id/character_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Name"
-            android:textAlignment="center"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp"
+            android:textAlignment="center" />
+
         <TextView
             android:id="@+id/type_character"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
             android:padding="5dp"
-            android:textColor="@color/root"/>
+            android:text=""
+            android:textColor="@color/root" />
+
         <Spinner
             android:id="@+id/spn_type_character"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dialog"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:spinnerMode="dialog" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Short Introduction"
             android:padding="5dp"
-            android:textColor="@color/root"/>
+            android:text="Short Introduction"
+            android:textColor="@color/root" />
 
         <EditText
             android:id="@+id/short_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Short Introduction"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Other Info"
-            android:textColor="@color/white"
-            android:background="@color/root"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:padding="5dp"/>
+            android:background="@drawable/background_title"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="@dimen/text_size"
+            android:text="Other Info"
+            android:textColor="@color/white" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="10">
+
             <TextView
                 android:id="@+id/title_gender"
-                android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:text="Gender"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
+
             <EditText
                 android:id="@+id/gender"
-                android:layout_weight="8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
                 android:hint="Gender"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="10">
+
             <TextView
                 android:id="@+id/title_birthday"
-                android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:text="Birthday"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
+
             <EditText
                 android:id="@+id/birthday"
-                android:layout_weight="8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
                 android:hint="Birthday"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="10">
+
             <TextView
                 android:id="@+id/title_height"
-                android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:text="Height"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
+
             <EditText
                 android:id="@+id/height"
-                android:layout_weight="8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
                 android:hint="Height"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="10">
+
             <TextView
                 android:id="@+id/title_weight"
-                android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:text="Weight"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
+
             <EditText
                 android:id="@+id/weight"
-                android:layout_weight="8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
                 android:hint="Weight"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="10">
+
             <TextView
                 android:id="@+id/title_address"
-                android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:text="Address"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
+
             <EditText
                 android:id="@+id/address"
-                android:layout_weight="8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
                 android:hint="Address"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="10">
+
             <TextView
                 android:id="@+id/title_zodiac"
-                android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:text="Zodiac"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
+
             <EditText
                 android:id="@+id/zodiac"
-                android:layout_weight="8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
                 android:hint="Zodiac"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

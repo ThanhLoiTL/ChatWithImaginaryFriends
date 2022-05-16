@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select Character Type"
+        android:text="Select Your Character"
         android:textSize="24sp"
         android:textColor="@color/root"
         android:gravity="center"
@@ -15,34 +15,20 @@
         android:padding="12dp"
         android:layout_marginBottom="20dp"/>
 
-    <TextView
-        android:id="@+id/choose_heart"
+    <ListView
+        android:id="@+id/lv_character"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="HEART (Make All By Myself)"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:padding="12dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/choose_ai"
+        android:id="@+id/btn_cancel_select_character"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AI"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:padding="12dp"/>
-
-    <TextView
-        android:id="@+id/btn_cancel_character"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:text="CANCEL"
         android:textColor="@color/root"
         android:textStyle="bold"
         android:layout_margin="20dp"
-        android:layout_gravity="right"/>
+        android:gravity="right"/>
 
 </LinearLayout>

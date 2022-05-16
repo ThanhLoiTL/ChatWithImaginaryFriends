@@ -3,6 +3,8 @@ package com.android.chatwithimaginaryfriends.fragment;
 import android.app.Dialog;
 import android.app.ListFragment;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +28,10 @@ import java.util.List;
 public class HeartFragment extends ListFragment {
     private final int CODE_HEART = 123;
     public static List<HeartModel> listHeartModel;
-    HeartAdapter heartAdapter;
+    private HeartAdapter heartAdapter;
 
-    ImageButton btnAddHeart;
-    IHeartDAO heartDAO;
+    private ImageButton btnAddHeart;
+    private IHeartDAO heartDAO;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -65,9 +67,10 @@ public class HeartFragment extends ListFragment {
     private void addHeart() {
         btnAddHeart.setOnClickListener(view -> {
             Dialog dialog = new Dialog(view.getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_add_heart);
-
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
             EditText heartName = dialog.findViewById(R.id.heart_name);
             EditText heartDescription = dialog.findViewById(R.id.heart_description);
             TextView btnOkHeart = dialog.findViewById(R.id.btn_ok_heart);

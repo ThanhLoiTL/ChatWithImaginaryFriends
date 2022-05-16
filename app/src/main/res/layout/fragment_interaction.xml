@@ -10,17 +10,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/root"
-            android:paddingLeft="5dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:background="@drawable/background_title"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Interaction list"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size" />
 
         <ImageButton
             android:id="@+id/btn_add_interaction"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@null"

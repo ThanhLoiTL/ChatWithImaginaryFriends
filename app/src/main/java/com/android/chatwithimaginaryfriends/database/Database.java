@@ -14,12 +14,12 @@ public class Database extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_HEART = "CREATE TABLE "
             + SystemConstant.TABLE_HEART + " (" + SystemConstant.COLUMN_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT," + SystemConstant.COLUMN_HEART_NAME
-            + " TEXT, " + SystemConstant.COLUMN_HEART_DESCRIPTION + " TEXT );";
+            + " TEXT, " + SystemConstant.COLUMN_HEART_DESCRIPTION + " TEXT, "
+            + SystemConstant.COLUMN_FINAL_REPLY + " TEXT );";
 
     private static final String CREATE_TABLE_INTERACTION = "CREATE TABLE "
             + SystemConstant.TABLE_INTERACTION + "(" + SystemConstant.COLUMN_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT,"+ SystemConstant.COLUMN_HEART_ID + " INTEGER, "
-            + SystemConstant.COLUMN_FINAL_REPLY +" TEXT, "
             + SystemConstant.COLUMN_TRIGGER_WORD +" TEXT, "+ SystemConstant.COLUMN_REPLY_PATTERN +" TEXT);";
 
     private static final String CREATE_TABLE_CHARACTER = "CREATE TABLE "
@@ -34,6 +34,22 @@ public class Database extends SQLiteOpenHelper {
             + SystemConstant.COLUMN_CHAR_WEIGHT+" REAL, "
             + SystemConstant.COLUMN_CHAR_ZODIAC+" TEXT, "
             + SystemConstant.COLUMN_CHAR_ADDRESS+" TEXT);";
+
+    private static final String CREATE_TABLE_CHAT = "CREATE TABLE "
+            + SystemConstant.TABLE_CHAT + "(" + SystemConstant.COLUMN_ID
+            + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + SystemConstant.COLUMN_CHAT_CHARACTER_ID + " INTEGER, "
+            + SystemConstant.COLUMN_CHAT_MESSAGE +" TEXT, "
+            + SystemConstant.COLUMN_CHAT_TIME +" TEXT, "
+            + SystemConstant.COLUMN_CHAT_IS_SEND +" TEXT);";
+
+    private static final String CREATE_TABLE_BOT = "CREATE TABLE "
+            + SystemConstant.TABLE_BOT + "(" + SystemConstant.COLUMN_ID
+            + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + SystemConstant.COLUMN_BOT_NAME + " TEXT, "
+            + SystemConstant.COLUMN_BOT_DESCRIPTION +" TEXT, "
+            + SystemConstant.COLUMN_BOT_AVATAR +" BLOB, "
+            + SystemConstant.COLUMN_BOT_URL +" TEXT);";
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,6 +70,9 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE_HEART);
         sqLiteDatabase.execSQL(CREATE_TABLE_INTERACTION);
         sqLiteDatabase.execSQL(CREATE_TABLE_CHARACTER);
+        sqLiteDatabase.execSQL(CREATE_TABLE_CHAT);
+        sqLiteDatabase.execSQL(CREATE_TABLE_BOT);
+        sqLiteDatabase.execSQL(INSERT_BOT_1);
     }
 
     @Override
@@ -61,6 +80,10 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_INTERACTION);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_HEART);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_CHARACTER);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_CHAT);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SystemConstant.TABLE_BOT);
         onCreate(sqLiteDatabase);
     }
+
+    private static final String INSERT_BOT_1 = "INSERT INTO bots values(1,'Brain Bot','This is a brain bot','','http://api.brainshop.ai/get?bid=165426&key=8S10YTsIlEFSMJKk&uid=[uid]&msg=')";
 }

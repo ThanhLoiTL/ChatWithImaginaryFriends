@@ -2,6 +2,8 @@ package com.android.chatwithimaginaryfriends.fragment;
 
 import android.app.Dialog;
 import android.app.ListFragment;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,13 +53,18 @@ public class ReplyFragment extends ListFragment {
     public void onListItemClick(ListView l, View view, int position, long id) {
         super.onListItemClick(l, view, position, id);
         Dialog dialog = new Dialog(view.getContext());
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_update_reply_pattern);
+        dialog.setContentView(R.layout.dialog_update);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+        TextView title = dialog.findViewById(R.id.title);
+        title.setText("Edit Reply Pattern");
 
-        EditText txtUpdateReplyPattern = dialog.findViewById(R.id.txt_update_reply_pattern);
-        TextView btnOkReplyPattern = dialog.findViewById(R.id.btn_ok_reply_pattern);
-        TextView btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel_reply_pattern);
-        TextView btnDeleteReplyPattern = dialog.findViewById(R.id.btn_delete_reply_pattern);
+        EditText txtUpdateReplyPattern = dialog.findViewById(R.id.txt_input);
+        txtUpdateReplyPattern.setHint("Please input a reply pattern");
+        TextView btnOkReplyPattern = dialog.findViewById(R.id.btn_ok);
+        TextView btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel);
+        TextView btnDeleteReplyPattern = dialog.findViewById(R.id.btn_delete);
 
         txtUpdateReplyPattern.setText(listReply.get(position));
 
@@ -104,12 +111,16 @@ public class ReplyFragment extends ListFragment {
     private void addReplyPattern() {
         btnAddReplyPattern.setOnClickListener(view -> {
             Dialog dialog = new Dialog(view.getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.dialog_add_reply_pattern);
-
-            EditText txtAddReplyPattern = dialog.findViewById(R.id.txt_add_reply_pattern);
-            TextView btnOkReplyPattern = dialog.findViewById(R.id.btn_ok_reply_pattern);
-            TextView btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel_reply_pattern);
+            dialog.setContentView(R.layout.dialog_add);
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+            TextView title = dialog.findViewById(R.id.title);
+            title.setText("Add Reply Pattern");
+            EditText txtAddReplyPattern = dialog.findViewById(R.id.txt_input);
+            txtAddReplyPattern.setHint("Please input a reply pattern");
+            TextView btnOkReplyPattern = dialog.findViewById(R.id.btn_ok);
+            TextView btnCancelReplyPattern = dialog.findViewById(R.id.btn_cancel);
 
             btnCancelReplyPattern.setOnClickListener(v -> {
                 dialog.dismiss();

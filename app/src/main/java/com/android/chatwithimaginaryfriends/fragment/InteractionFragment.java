@@ -3,12 +3,13 @@ package com.android.chatwithimaginaryfriends.fragment;
 import android.app.Dialog;
 import android.app.ListFragment;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -24,7 +25,7 @@ import com.android.chatwithimaginaryfriends.dao.impl.InteractionDAO;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.model.InteractionModel;
 import com.android.chatwithimaginaryfriends.view.EditInteractionActivity;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class InteractionFragment extends ListFragment {
@@ -72,12 +73,16 @@ public class InteractionFragment extends ListFragment {
     private void addInteraction() {
         btnAddInteraction.setOnClickListener(view -> {
             Dialog dialog = new Dialog(view.getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.dialog_add_interaction);
-
-            EditText triggerWord = dialog.findViewById(R.id.txt_trigger_word);
-            TextView btnOkInteraction = dialog.findViewById(R.id.btn_ok_interaction);
-            TextView btnCancelInteraction = dialog.findViewById(R.id.btn_cancel_interaction);
+            dialog.setContentView(R.layout.dialog_add);
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+            TextView title = dialog.findViewById(R.id.title);
+            title.setText("Add Interaction");
+            EditText triggerWord = dialog.findViewById(R.id.txt_input);
+            triggerWord.setHint("Please input a trigger word");
+            TextView btnOkInteraction = dialog.findViewById(R.id.btn_ok);
+            TextView btnCancelInteraction = dialog.findViewById(R.id.btn_cancel);
 
             btnCancelInteraction.setOnClickListener(v -> {
                 dialog.dismiss();

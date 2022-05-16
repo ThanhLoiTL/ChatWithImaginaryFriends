@@ -1,5 +1,6 @@
 package com.android.chatwithimaginaryfriends.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -11,13 +12,18 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.chatwithimaginaryfriends.R;
+import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.fragment.InteractionFragment;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 
 public class InteractionActivity extends AppCompatActivity {
-    FragmentManager fragmentManager = getFragmentManager();
-    TextView finalReply;
-    ImageButton btnSaveHeart;
+    private static final int REQUEST_CODE_FINAL_REPLY = 1145;
+    private FragmentManager fragmentManager = getFragmentManager();
+    private TextView finalReply;
+    private ImageButton btnSaveHeart;
+    private HeartModel heartModel;
+    private IHeartDAO heartDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +35,38 @@ public class InteractionActivity extends AppCompatActivity {
         InteractionFragment interactionFragment = new InteractionFragment();
 
         Intent intent = getIntent();
-        HeartModel heartModel = (HeartModel) intent.getSerializableExtra("HeartModel");
+        heartModel = (HeartModel) intent.getSerializableExtra("HeartModel");
         Bundle bundle = new Bundle();
         bundle.putSerializable("HeartModel", heartModel);
         interactionFragment.setArguments(bundle);
         addFragment(interactionFragment);
+        finalReply.setText(heartModel.getFinalReply());
 
         btnSaveHeart.setOnClickListener(view -> {
             finish();
         });
 
         finalReply.setOnClickListener(view -> {
-            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+            Intent intent1 = new Intent(this, EditFinalReplyActivity.class);
+            intent1.putExtra("Heart", heartModel);
+            startActivityForResult(intent1, REQUEST_CODE_FINAL_REPLY);
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE_FINAL_REPLY){
+            heartModel = heartDAO.findOne(heartModel.getId());
+            finalReply.setText(heartModel.getFinalReply());
+        }
     }
 
     private void mapping() {
         finalReply = findViewById(R.id.final_reply);
         btnSaveHeart = findViewById(R.id.btn_save_heart);
+        heartDAO = new HeartDAO();
     }
     private void addFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

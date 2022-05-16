@@ -24,6 +24,7 @@ public class HeartDAO implements IHeartDAO {
         ContentValues values = new ContentValues();
         values.put(SystemConstant.COLUMN_HEART_NAME, heart.getHeartName());
         values.put(SystemConstant.COLUMN_HEART_DESCRIPTION, heart.getDescription());
+        values.put(SystemConstant.COLUMN_FINAL_REPLY, heart.getFinalReply());
 
         long id = db.insert(SystemConstant.TABLE_HEART, null, values);
         return id;
@@ -43,7 +44,7 @@ public class HeartDAO implements IHeartDAO {
                 heart.setId(cursor.getLong((cursor.getColumnIndex(SystemConstant.COLUMN_ID))));
                 heart.setHeartName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_NAME)));
                 heart.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_DESCRIPTION)));
-
+                heart.setFinalReply(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_FINAL_REPLY)));
                 listHeart.add(heart);
             } while (cursor.moveToNext());
         }
@@ -63,6 +64,7 @@ public class HeartDAO implements IHeartDAO {
         ContentValues values = new ContentValues();
         values.put(SystemConstant.COLUMN_HEART_NAME, heart.getHeartName());
         values.put(SystemConstant.COLUMN_HEART_DESCRIPTION, heart.getDescription());
+        values.put(SystemConstant.COLUMN_FINAL_REPLY, heart.getFinalReply());
         return db.update(SystemConstant.TABLE_HEART, values, SystemConstant.COLUMN_ID + " = ?",
                 new String[] { String.valueOf(heart.getId()) });
     }
@@ -80,6 +82,7 @@ public class HeartDAO implements IHeartDAO {
         heart.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
         heart.setHeartName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_NAME)));
         heart.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_DESCRIPTION)));
+        heart.setFinalReply(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_FINAL_REPLY)));
         return heart;
     }
 }

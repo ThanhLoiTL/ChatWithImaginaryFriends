@@ -88,4 +88,27 @@ public class InteractionDAO implements IInteractionDAO {
 
         return interaction;
     }
+
+    @SuppressLint("Range")
+    @Override
+    public List<InteractionModel> findByHeart(long heartId) {
+        List<InteractionModel> listInteraction = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM "+ SystemConstant.TABLE_INTERACTION
+                + " WHERE " + SystemConstant.COLUMN_HEART_ID + " = " +heartId;
+
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                InteractionModel interaction = new InteractionModel();
+                interaction.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
+                interaction.setIdHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_ID)));
+                interaction.setTriggerWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_TRIGGER_WORD)));
+                interaction.setReplyWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_REPLY_PATTERN)));
+
+                listInteraction.add(interaction);
+            } while (cursor.moveToNext());
+        }
+        return listInteraction;
+    }
 }

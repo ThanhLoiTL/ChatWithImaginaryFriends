@@ -11,10 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.chatwithimaginaryfriends.R;
+import com.android.chatwithimaginaryfriends.dao.IBotDAO;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.BotDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.CharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
+import com.android.chatwithimaginaryfriends.model.BotModel;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
@@ -26,8 +29,9 @@ public class CharacterAdapter extends BaseAdapter {
     private int layout;
     public List<CharacterModel> listCharacterModel;
 
-    IHeartDAO heartDAO;
-    ICharacterDAO characterDAO;
+    private IHeartDAO heartDAO;
+    private ICharacterDAO characterDAO;
+    private IBotDAO botDAO;
 
     public CharacterAdapter(Context context, int layout, List<CharacterModel> listCharacterModel) {
         this.context = context;
@@ -60,6 +64,7 @@ public class CharacterAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
         heartDAO = new HeartDAO();
+        botDAO = new BotDAO();
         if(view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -79,7 +84,8 @@ public class CharacterAdapter extends BaseAdapter {
             HeartModel heart = heartDAO.findOne(characterModel.getHeart());
             viewHolder.heartOrBot.setText(heart.getHeartName());
         }else{
-            //viewHolder.heartOrBot.setText(characterModel.getBot().toString());
+            BotModel botModel = botDAO.findOne(characterModel.getBot());
+            viewHolder.heartOrBot.setText(botModel.getName());
         }
         viewHolder.characterDescription.setText(characterModel.getShortDescription());
         viewHolder.imgAvatar.setImageBitmap(ImageUtil.byteToBitmap(characterModel.getAvatar()));

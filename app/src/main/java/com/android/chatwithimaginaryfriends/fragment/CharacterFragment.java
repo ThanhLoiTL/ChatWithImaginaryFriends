@@ -3,6 +3,8 @@ package com.android.chatwithimaginaryfriends.fragment;
 import android.app.Dialog;
 import android.app.ListFragment;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -28,10 +30,10 @@ import java.util.List;
 public class CharacterFragment extends ListFragment {
     private final int CODE_CHARACTER = 1101;
     public List<CharacterModel> listCharacterModel;
-    CharacterAdapter characterAdapter;
+    private CharacterAdapter characterAdapter;
 
-    ICharacterDAO characterDAO;
-    ImageButton btnAddCharacter;
+    private ICharacterDAO characterDAO;
+    private ImageButton btnAddCharacter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -69,12 +71,9 @@ public class CharacterFragment extends ListFragment {
         }
     }
 
-
-
     private void addCharacter() {
         btnAddCharacter.setOnClickListener(view -> {
             Dialog dialog = new Dialog(view.getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_select_type_character);
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
@@ -95,7 +94,10 @@ public class CharacterFragment extends ListFragment {
             });
 
             chooseAi.setOnClickListener(v-> {
-
+                Intent intent = new Intent(view.getContext(), AddEditCharacterActivity.class);
+                intent.putExtra("CHARACTER_TYPE", "BOT");
+                dialog.dismiss();
+                startActivityForResult(intent, CODE_CHARACTER);
             });
 
             btnCancelCharacter.setOnClickListener(v -> {

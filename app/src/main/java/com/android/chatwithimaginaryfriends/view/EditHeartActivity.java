@@ -1,5 +1,6 @@
 package com.android.chatwithimaginaryfriends.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,11 +18,11 @@ import com.android.chatwithimaginaryfriends.model.HeartModel;
 
 
 public class EditHeartActivity extends AppCompatActivity {
-    private static int CODE_INTERACTION = 111;
+    private static int CODE_INTERACTION = 1119;
     EditText heartName, heartDescription;
     Button createEditInteraction;
     ImageButton saveHeart;
-
+    HeartModel heartModel;
     IHeartDAO heartDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +31,16 @@ public class EditHeartActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_edit_heart);
         mapping();
-
+        heartDAO = new HeartDAO();
         Intent intent = getIntent();
-        HeartModel heartModel = (HeartModel) intent.getSerializableExtra("HeartModel");
+        heartModel = (HeartModel) intent.getSerializableExtra("HeartModel");
+        //heartModel = heartDAO.findOne(heartModel.getId());
         heartName.setText(heartModel.getHeartName());
         heartDescription.setText(heartModel.getDescription());
 
         saveHeart.setOnClickListener(view -> {
             heartModel.setHeartName(heartName.getText().toString().trim());
             heartModel.setDescription(heartDescription.getText().toString().trim());
-            heartDAO = new HeartDAO();
             int isSuccess = heartDAO.updateHeart(heartModel);
             if(isSuccess == 1){
                 Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
@@ -55,6 +56,15 @@ public class EditHeartActivity extends AppCompatActivity {
             startActivityForResult(intentInteraction, CODE_INTERACTION);
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==CODE_INTERACTION) {
+            heartModel = heartDAO.findOne(heartModel.getId());
+        }
+    }
+
     private void mapping() {
         heartName = findViewById(R.id.heart_name);
         heartDescription = findViewById(R.id.heart_description);

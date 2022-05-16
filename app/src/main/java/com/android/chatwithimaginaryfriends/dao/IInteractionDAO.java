@@ -10,4 +10,5 @@ public interface IInteractionDAO {
     void deleteInteraction(long id);
     int updateInteraction(InteractionModel interactionModel);
     InteractionModel findOne(long id);
+    List<InteractionModel> findByHeart(long heartId);
 }

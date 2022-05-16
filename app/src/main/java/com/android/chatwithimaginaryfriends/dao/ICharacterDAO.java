@@ -9,4 +9,5 @@ public interface ICharacterDAO {
     int updateCharacter(CharacterModel character);
     void deleteCharacter(long id);
     List<CharacterModel> getAll();
+    CharacterModel findOne(long id);
 }

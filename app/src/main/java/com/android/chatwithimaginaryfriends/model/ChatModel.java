@@ -1,19 +1,36 @@
 package com.android.chatwithimaginaryfriends.model;
-
 public class ChatModel {
-    public String receiverName;
-    public String message;
-    public boolean isSend;
+    private Long id;
+    private Long charterId;
+    private String message;
+    private String time;
+    private Boolean isSend;
 
-    public ChatModel(String message, boolean isSend) {
+    public ChatModel(Long charterId, String message, String time, Boolean isSend) {
+        this.charterId = charterId;
         this.message = message;
+        this.time = time;
         this.isSend = isSend;
     }
 
-    public ChatModel(String receiverName, String message, boolean isSend) {
-        this.receiverName = receiverName;
-        this.message = message;
-        this.isSend = isSend;
+    public ChatModel() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCharterId() {
+        return charterId;
+    }
+
+    public void setCharterId(Long charterId) {
+        this.charterId = charterId;
     }
 
     public String getMessage() {
@@ -24,19 +41,19 @@ public class ChatModel {
         this.message = message;
     }
 
-    public boolean isSend() {
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Boolean getIsSend() {
         return isSend;
     }
 
-    public void setSend(boolean send) {
+    public void setIsSend(Boolean send) {
         isSend = send;
-    }
-
-    public String getReceiverName() {
-        return receiverName;
-    }
-
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
     }
 }

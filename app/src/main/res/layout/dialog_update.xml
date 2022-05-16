@@ -2,23 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle_round_corner_assignment_alert">
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Reply Pattern"
+        android:text="Edit Final Reply"
         android:textSize="24sp"
         android:textColor="@color/root"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        android:padding="12dp"/>
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"/>
 
     <EditText
-        android:id="@+id/txt_update_reply_pattern"
+        android:id="@+id/txt_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Please input a reply pattern"
+        android:hint="Please input a final reply"
         android:minHeight="48dp"
         android:layout_margin="10dp"/>
     <RelativeLayout
@@ -27,32 +29,33 @@
         android:padding="15dp">
 
         <TextView
-            android:id="@+id/btn_ok_reply_pattern"
+            android:id="@+id/btn_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="20dp"
-            android:layout_toEndOf="@+id/btn_delete_reply_pattern"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toEndOf="@+id/btn_delete"
             android:text="OK"
             android:textColor="@color/root"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/btn_cancel_reply_pattern"
+            android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/btn_ok_reply_pattern"
+            android:layout_toEndOf="@+id/btn_ok"
             android:text="CANCEL"
             android:textColor="@color/root"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/btn_delete_reply_pattern"
+            android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DELETE"
             android:textColor="@color/root"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
 </LinearLayout>
