@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
+import com.android.chatwithimaginaryfriends.util.ImageUtil;
 
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class CharacterListAdapter extends ArrayAdapter<CharacterModel> {
 
     private class ViewHolder {
         TextView characterName;
+        ImageView imgAvatar;
     }
 
     @Override
@@ -43,13 +46,15 @@ public class CharacterListAdapter extends ArrayAdapter<CharacterModel> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            viewHolder.characterName = view.findViewById(R.id.tv_item);
+            viewHolder.characterName = view.findViewById(R.id.character_name);
+            viewHolder.imgAvatar = view.findViewById(R.id.img_avatar);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
         CharacterModel characterModel = listCharacter.get(i);
         viewHolder.characterName.setText(characterModel.getName());
+        viewHolder.imgAvatar.setImageBitmap(ImageUtil.byteToBitmap(characterModel.getAvatar()));
         return view;
     }
 }

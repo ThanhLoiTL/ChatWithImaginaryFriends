@@ -81,7 +81,7 @@ public class ChatFragment extends ListFragment {
             }
             ListView listView = dialog.findViewById(R.id.lv_character);
             TextView btnCancel = dialog.findViewById(R.id.btn_cancel_select_character);
-            ArrayAdapter arrayAdapter = new CharacterListAdapter(v.getContext(), R.layout.item_combobox, listCharacter);
+            ArrayAdapter arrayAdapter = new CharacterListAdapter(v.getContext(), R.layout.row_select_character, listCharacter);
             listView.setAdapter(arrayAdapter);
             listView.setOnItemClickListener((adapterView, view, which, l) -> {
                 Intent intent = new Intent(v.getContext(), ChatActivity.class);
