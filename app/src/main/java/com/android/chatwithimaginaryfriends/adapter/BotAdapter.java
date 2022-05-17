@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.model.BotModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
+import com.android.chatwithimaginaryfriends.util.ImageUtil;
 
 import java.util.List;
 
@@ -52,13 +53,14 @@ public class BotAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             viewHolder.txtBotName = view.findViewById(R.id.txtBotName);
+            viewHolder.imgBot = view.findViewById(R.id.imgBot);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
         BotModel botModel = listBotModel.get(i);
         viewHolder.txtBotName.setText(botModel.getName());
-
+        viewHolder.imgBot.setImageBitmap(ImageUtil.byteToBitmap(botModel.getAvatar()));
         return view;
     }
 }

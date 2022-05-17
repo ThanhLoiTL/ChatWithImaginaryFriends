@@ -129,7 +129,8 @@ public class Database extends SQLiteOpenHelper {
         @SuppressLint("UseCompatLoadingForDrawables") Bitmap bm = ((BitmapDrawable) context.getResources().getDrawable(image)).getBitmap();
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, os);
-        return os.toByteArray();
+        byte[] b = os.toByteArray();
+        return b;
     }
 
     private static final String INSERT_CHARACTER_1 = "INSERT INTO characters values(null,'Mora',?,1,0,'Chat with me everywhere','Female','2001/03/04','1m55','45kg','Pisces','Japan')";

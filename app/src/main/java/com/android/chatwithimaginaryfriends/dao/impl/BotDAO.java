@@ -33,6 +33,7 @@ public class BotDAO implements IBotDAO {
                 bot.setId(cursor.getLong((cursor.getColumnIndex(SystemConstant.COLUMN_ID))));
                 bot.setName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_NAME)));
                 bot.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_DESCRIPTION)));
+                bot.setAvatar(cursor.getBlob(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_AVATAR)));
                 bot.setUrl(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_URL)));
                 listBot.add(bot);
             } while (cursor.moveToNext());
@@ -53,6 +54,7 @@ public class BotDAO implements IBotDAO {
         bot.setId(cursor.getLong((cursor.getColumnIndex(SystemConstant.COLUMN_ID))));
         bot.setName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_NAME)));
         bot.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_DESCRIPTION)));
+        bot.setAvatar(cursor.getBlob(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_AVATAR)));
         bot.setUrl(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_URL)));
         return bot;
     }

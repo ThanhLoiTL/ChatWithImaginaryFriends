@@ -22,6 +22,7 @@ public class ImageUtil {
         return byteArray.toByteArray();
     }
     public static Bitmap byteToBitmap(byte[] img) {
+        int s = img.length;
         Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
         return bitmap;
     }
