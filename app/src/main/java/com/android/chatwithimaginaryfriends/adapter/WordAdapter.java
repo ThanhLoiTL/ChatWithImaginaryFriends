@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.android.chatwithimaginaryfriends.R;
 import java.util.List;
 
-
 public class WordAdapter extends BaseAdapter {
     private Context context;
     private int layout;
@@ -51,7 +50,6 @@ public class WordAdapter extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-
         String word = listWord.get(i);
         viewHolder.triggerWord.setText(word);
         return view;

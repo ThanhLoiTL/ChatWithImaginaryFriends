@@ -30,8 +30,8 @@ public class Database extends SQLiteOpenHelper {
             + SystemConstant.COLUMN_CHAR_SHORT_DESCRIPTION+" TEXT, "
             + SystemConstant.COLUMN_CHAR_GENDER +" TEXT, "
             + SystemConstant.COLUMN_CHAR_BIRTHDAY+" TEXT, "
-            + SystemConstant.COLUMN_CHAR_HEIGHT+" REAL, "
-            + SystemConstant.COLUMN_CHAR_WEIGHT+" REAL, "
+            + SystemConstant.COLUMN_CHAR_HEIGHT+" TEXT, "
+            + SystemConstant.COLUMN_CHAR_WEIGHT+" TEXT, "
             + SystemConstant.COLUMN_CHAR_ZODIAC+" TEXT, "
             + SystemConstant.COLUMN_CHAR_ADDRESS+" TEXT);";
 

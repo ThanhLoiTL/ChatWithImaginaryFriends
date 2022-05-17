@@ -11,7 +11,6 @@ import com.android.chatwithimaginaryfriends.R;
 
 import java.util.List;
 
-
 public class FinalReplyAdapter extends BaseAdapter {
     private Context context;
     private int layout;
@@ -53,7 +52,6 @@ public class FinalReplyAdapter extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-
         String word = listFinalReply.get(i);
         viewHolder.finalReply.setText(word);
         return view;

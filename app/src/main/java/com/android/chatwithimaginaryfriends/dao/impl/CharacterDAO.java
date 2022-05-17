@@ -83,8 +83,8 @@ public class CharacterDAO implements ICharacterDAO {
                 character.setShortDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_SHORT_DESCRIPTION)));
                 character.setGender(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_GENDER)));
                 character.setBirthday(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BIRTHDAY)));
-                character.setHeight(cursor.getDouble(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEIGHT)));
-                character.setWeight(cursor.getDouble(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_WEIGHT)));
+                character.setHeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEIGHT)));
+                character.setWeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_WEIGHT)));
                 character.setZodiac(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ZODIAC)));
                 character.setAddress(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ADDRESS)));
 
@@ -111,8 +111,8 @@ public class CharacterDAO implements ICharacterDAO {
         character.setHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEART)));
         character.setGender(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_GENDER)));
         character.setBirthday(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BIRTHDAY)));
-        character.setWeight(cursor.getDouble(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_WEIGHT)));
-        character.setHeight(cursor.getDouble(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEIGHT)));
+        character.setWeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_WEIGHT)));
+        character.setHeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEIGHT)));
         character.setShortDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_SHORT_DESCRIPTION)));
         character.setAddress(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ADDRESS)));
         character.setZodiac(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ZODIAC)));

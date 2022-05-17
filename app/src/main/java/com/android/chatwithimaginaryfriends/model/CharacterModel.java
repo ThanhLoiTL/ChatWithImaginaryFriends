@@ -11,8 +11,8 @@ public class CharacterModel implements Serializable {
     private String shortDescription;
     private String gender;
     private String birthday;
-    private double height;
-    private double weight;
+    private String height;
+    private String weight;
     private String zodiac;
     private String address;
 
@@ -84,19 +84,19 @@ public class CharacterModel implements Serializable {
         this.birthday = birthday;
     }
 
-    public double getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
-    public double getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 

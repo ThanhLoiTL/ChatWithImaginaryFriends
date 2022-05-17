@@ -25,11 +25,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EditInteractionActivity extends AppCompatActivity {
-    FragmentManager fragmentManager = getFragmentManager();
-    ImageButton btnSaveInteraction;
-    WordFragment wordFragment;
-    ReplyFragment replyFragment;
-    Bundle bundle;
+    private FragmentManager fragmentManager = getFragmentManager();
+    private ImageButton btnSaveInteraction;
+    private WordFragment wordFragment;
+    private ReplyFragment replyFragment;
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
@@ -18,7 +19,8 @@
             android:text="Trigger and reply"
             android:textColor="@color/root"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <ImageButton
             android:id="@+id/btn_save_interaction"
@@ -29,7 +31,8 @@
             android:background="@null"
             android:contentDescription="Search"
             android:padding="12dp"
-            android:src="@drawable/outline_save_alt_24" />
+            android:src="@drawable/outline_save_alt_24"
+            tools:ignore="HardcodedText" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

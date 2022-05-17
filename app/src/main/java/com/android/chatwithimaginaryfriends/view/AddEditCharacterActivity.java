@@ -160,8 +160,8 @@ public class AddEditCharacterActivity extends AppCompatActivity {
                 character.setShortDescription(_short_description);
                 character.setGender(_gender);
                 character.setBirthday(_birthday);
-                character.setHeight(Double.parseDouble(_height));
-                character.setWeight(Double.parseDouble(_weight));
+                character.setHeight(_height);
+                character.setWeight(_weight);
                 character.setAddress(_address);
                 character.setZodiac(_zodiac);
                 character.setAvatar(ImageUtil.bitmapToByteArray(imgAvatar));
@@ -223,8 +223,8 @@ public class AddEditCharacterActivity extends AppCompatActivity {
             shortDescription.setText(character.getShortDescription());
             gender.setText(character.getGender());
             birthday.setText(character.getBirthday());
-            height.setText(String.valueOf(character.getHeight()));
-            weight.setText(String.valueOf(character.getWeight()));
+            height.setText(character.getHeight());
+            weight.setText(character.getWeight());
             address.setText(character.getAddress());
             zodiac.setText(character.getZodiac());
             imgAvatar.setImageBitmap(ImageUtil.byteToBitmap(character.getAvatar()));

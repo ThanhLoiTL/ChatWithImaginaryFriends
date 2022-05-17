@@ -5,11 +5,10 @@ import android.app.ListFragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -26,11 +25,11 @@ import java.util.List;
 
 public class WordFragment extends ListFragment {
     public List<String> listWord;
-    WordAdapter wordAdapter;
+    private WordAdapter wordAdapter;
 
-    ImageButton btnAddTriggerWord;
-    IInteractionDAO interactionDAO;
-    InteractionModel interactionModel;
+    private ImageButton btnAddTriggerWord;
+    private IInteractionDAO interactionDAO;
+    private InteractionModel interactionModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +37,7 @@ public class WordFragment extends ListFragment {
         interactionDAO = new InteractionDAO();
         btnAddTriggerWord = view.findViewById(R.id.btn_add_trigger_word);
         interactionModel = (InteractionModel) getArguments().getSerializable("InteractionModel");
+        interactionModel = interactionDAO.findOne(interactionModel.getId());
         listWord = ConvertUtil.stringToArray(interactionModel.getTriggerWord());
         wordAdapter = new WordAdapter(getActivity(), R.layout.row_trigger_word, listWord);
         setListAdapter(wordAdapter);

@@ -32,17 +32,14 @@ import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.model.InteractionModel;
 import com.android.chatwithimaginaryfriends.util.ConvertUtil;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
+import com.android.chatwithimaginaryfriends.util.ResponseChat;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -104,27 +101,23 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
     private class HeartAPI extends AsyncTask<List<ChatModel>, Void, String> {
-        String reply = "No reply";
+        String reply = "";
         String text = editMessage.getText().toString().trim();
         @Override
         protected String doInBackground(List<ChatModel>... lists) {
             HeartModel heart = heartDAO.findOne(character.getHeart());
             List<InteractionModel> interactionList = interactionDAO.findByHeart(heart.getId());
-            for (InteractionModel interaction: interactionList) {
-                List<String> listWord = ConvertUtil.stringToArray(interaction.getTriggerWord());
-                List<String> listReply = ConvertUtil.stringToArray(interaction.getReplyWord());
-
-                for (String word: listWord) {
-                    if(text.equalsIgnoreCase(word)){
-                        reply = listReply.get(new Random().nextInt(listReply.size()));
-                        return reply;
-                    }
+            reply = ResponseChat.response(interactionList, text);
+            if(reply.equals("")){
+                List<String> listFinalReply = ConvertUtil.stringToArray(heart.getFinalReply());
+                if(listFinalReply.size() > 0) {
+                    reply = listFinalReply.get(new Random().nextInt(listFinalReply.size()));
+                }
+                if(reply.equals("")){
+                    reply = "No set reply";
                 }
             }
-            List<String> listFinalReply = ConvertUtil.stringToArray(heart.getFinalReply());
-            if(listFinalReply.size() > 0) {
-                reply = listFinalReply.get(new Random().nextInt(listFinalReply.size()));
-            }
+
             return reply;
         }
 

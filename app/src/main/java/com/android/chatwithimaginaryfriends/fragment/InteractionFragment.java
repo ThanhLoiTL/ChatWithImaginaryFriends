@@ -29,7 +29,7 @@ import com.android.chatwithimaginaryfriends.view.EditInteractionActivity;
 import java.util.List;
 
 public class InteractionFragment extends ListFragment {
-    private static int CODE_INTERACTION = 222;
+    private static final int CODE_INTERACTION = 222;
     public static List<InteractionModel> listInteractionModel;
     InteractionAdapter interactionAdapter;
 
@@ -39,11 +39,11 @@ public class InteractionFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_interaction, container, false);
         interactionDAO = new InteractionDAO();
         listInteractionModel = interactionDAO.getAll();
         interactionAdapter = new InteractionAdapter(getActivity(), R.layout.row_interaction, listInteractionModel);
         setListAdapter(interactionAdapter);
-        View view = inflater.inflate(R.layout.fragment_interaction, container, false);
         btnAddInteraction = view.findViewById(R.id.btn_add_interaction);
         addInteraction();
 

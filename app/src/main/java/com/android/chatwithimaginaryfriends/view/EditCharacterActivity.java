@@ -120,8 +120,8 @@ public class EditCharacterActivity extends AppCompatActivity {
                 character.setShortDescription(_short_description);
                 character.setGender(_gender);
                 character.setBirthday(_birthday);
-                character.setHeight(Double.parseDouble(_height));
-                character.setWeight(Double.parseDouble(_weight));
+                character.setHeight(_height);
+                character.setWeight(_weight);
                 character.setAddress(_address);
                 character.setZodiac(_zodiac);
                 character.setAvatar(ImageUtil.bitmapToByteArray(imgAvatar));

@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginTop="100dp">
+    android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,12 +11,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_title"
-            android:textSize="16dp"
             android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="Reply patterns"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="16dp"/>
 
         <ImageButton
             android:id="@+id/btn_add_reply_pattern"
@@ -28,12 +27,13 @@
             android:background="@null"
             android:contentDescription="Add reply"
             android:padding="12dp"
-            android:src="@drawable/ic_add_white_24" />
+            android:src="@drawable/ic_add_white_24"/>
     </RelativeLayout>
+
     <ListView
         android:id="@android:id/list"
-        android:divider="@null"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:layout_below="@+id/relative_layout_add_reply_pattern"
-        android:layout_height="wrap_content"/>
+        android:divider="@null" />
 </RelativeLayout>
