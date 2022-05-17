@@ -24,6 +24,7 @@ public class InteractionActivity extends AppCompatActivity {
     private ImageButton btnSaveHeart;
     private HeartModel heartModel;
     private IHeartDAO heartDAO;
+    private InteractionFragment interactionFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,6 @@ public class InteractionActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_interaction);
         mapping();
-        InteractionFragment interactionFragment = new InteractionFragment();
 
         Intent intent = getIntent();
         heartModel = (HeartModel) intent.getSerializableExtra("HeartModel");
@@ -67,6 +67,7 @@ public class InteractionActivity extends AppCompatActivity {
         finalReply = findViewById(R.id.final_reply);
         btnSaveHeart = findViewById(R.id.btn_save_heart);
         heartDAO = new HeartDAO();
+        interactionFragment = new InteractionFragment();
     }
     private void addFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

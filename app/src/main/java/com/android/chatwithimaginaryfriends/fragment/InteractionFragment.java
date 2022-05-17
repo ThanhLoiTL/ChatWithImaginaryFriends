@@ -33,22 +33,23 @@ public class InteractionFragment extends ListFragment {
     public static List<InteractionModel> listInteractionModel;
     InteractionAdapter interactionAdapter;
 
-    ImageButton btnAddInteraction;
-    IInteractionDAO interactionDAO;
-    HeartModel heartModel;
+    private ImageButton btnAddInteraction;
+    private IInteractionDAO interactionDAO;
+    private HeartModel heartModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_interaction, container, false);
         interactionDAO = new InteractionDAO();
-        listInteractionModel = interactionDAO.getAll();
+        //get heart from InteractionActivity to get id heart
+        heartModel = (HeartModel) getArguments().getSerializable("HeartModel");
+        listInteractionModel = interactionDAO.findByHeart(heartModel.getId());
         interactionAdapter = new InteractionAdapter(getActivity(), R.layout.row_interaction, listInteractionModel);
         setListAdapter(interactionAdapter);
         btnAddInteraction = view.findViewById(R.id.btn_add_interaction);
         addInteraction();
 
-        //get heart from InteractionActivity to get id heart
-        heartModel = (HeartModel) getArguments().getSerializable("HeartModel");
+
         return view;
     }
 

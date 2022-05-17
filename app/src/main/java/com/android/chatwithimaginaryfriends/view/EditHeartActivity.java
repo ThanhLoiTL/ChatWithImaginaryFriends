@@ -34,7 +34,7 @@ public class EditHeartActivity extends AppCompatActivity {
         heartDAO = new HeartDAO();
         Intent intent = getIntent();
         heartModel = (HeartModel) intent.getSerializableExtra("HeartModel");
-        //heartModel = heartDAO.findOne(heartModel.getId());
+        heartModel = heartDAO.findOne(heartModel.getId());
         heartName.setText(heartModel.getHeartName());
         heartDescription.setText(heartModel.getDescription());
 
