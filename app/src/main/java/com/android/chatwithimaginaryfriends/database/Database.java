@@ -1,5 +1,6 @@
 package com.android.chatwithimaginaryfriends.database;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Database extends SQLiteOpenHelper {
+    private static Context context;
     public static final String DATABASE_NAME = "ChatWithImaginaryFriends";
     private static final int DATABASE_VERSION = 1;
 
@@ -68,6 +70,7 @@ public class Database extends SQLiteOpenHelper {
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     public void QueryData(String sql){
@@ -100,13 +103,14 @@ public class Database extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
     private void insertData(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(INSERT_BOT_1);
+        sqLiteDatabase.execSQL(INSERT_BOT_1, new Object[]{addImage(R.drawable.brandshop)});
         sqLiteDatabase.execSQL(INSERT_HEART_1);
         sqLiteDatabase.execSQL(INSERT_INTER_1);
-        //sqLiteDatabase.execSQL(INSERT_CHARACTER_1);
+        sqLiteDatabase.execSQL(INSERT_CHARACTER_1,new Object[]{addImage(R.drawable.anime_nu_sieu_de_thuong_1)});
+        sqLiteDatabase.execSQL(INSERT_CHARACTER_2,new Object[]{addImage(R.drawable.image_brainbot)});
     }
 
-    private static final String INSERT_BOT_1 = "INSERT INTO bots values(1,'Brain Bot','This is a brain bot','','http://api.brainshop.ai/get?bid=165426&key=8S10YTsIlEFSMJKk&uid=[uid]&msg=')";
+    private static final String INSERT_BOT_1 = "INSERT INTO bots values(1,'Brain Bot','This is a brain bot',?,'http://api.brainshop.ai/get?bid=165426&key=8S10YTsIlEFSMJKk&uid=[uid]&msg=')";
     private static final String INSERT_HEART_1 = "INSERT INTO hearts values(null,'Mora','A friendly coyote. She is supposed to be on of my Original characters, she lives in Harmonia with her friend. Her friends are her family. The members of her family Belinda, may,...','I don''t know that,I do not understand,;))')";
     private static final String INSERT_INTER_1 = "INSERT INTO interactions values(null,1,'Hey','Yeah! You can talk to me anytime'), " +
             "(null,1,'I love you','Aw'), (null,1,'Hi,hello,hey','Hellooo'),(null,1,'good','Great!'),(null,1,'feel upset,angry,sad','What happened?')," +
@@ -121,21 +125,13 @@ public class Database extends SQLiteOpenHelper {
             "(null,1,'sleep','(yawn)...'),(null,1,'sleep','(yawn)...'),(null,1,'goodnight','Goodnight :)'),(null,1,'love music','Music is healing'),(null,1,'agree','Yess'),(null,1,'perfect day','You sound happy and cheery')," +
             "(null,1,'sick','Sick? Oh no'),(null,1,'lonely','I understand'),(null,1,'eating','Mmmm'),(null,1,'relax','I will relax with you'),(null,1,'talking','Okey,Sure')";
 
-//    private static byte[] addImage() {
-//        String filePath = Uri.parse("android.resource://"+R.class.getPackage().getName()+"/" +R.drawable.anime_nu).toString();
-//        File imageFile = new File(filePath);
-//        File path = Environment.getExternalStoragePublicDirectory(
-//                Environment.DIRECTORY_PICTURES);
-//        File file = new File(path, "anime_nu.jpg");
-//
-//
-//        Bitmap bm = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.ic_person_round);
-//
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bm.compress(Bitmap.CompressFormat.JPEG, 100 , baos);
-//        byte[] b =
-//        return b;
-//    }
+    private byte[] addImage(int image) {
+        @SuppressLint("UseCompatLoadingForDrawables") Bitmap bm = ((BitmapDrawable) context.getResources().getDrawable(image)).getBitmap();
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, os);
+        return os.toByteArray();
+    }
 
-    //private static final String INSERT_CHARACTER_1 = "INSERT INTO characters values(null,'Mora',"+addImage()+",1,0,'Chat with me everywhere','Female','2001/03/04','1m55','45kg','Pisces','Japan')";
+    private static final String INSERT_CHARACTER_1 = "INSERT INTO characters values(null,'Mora',?,1,0,'Chat with me everywhere','Female','2001/03/04','1m55','45kg','Pisces','Japan')";
+    private static final String INSERT_CHARACTER_2 = "INSERT INTO characters values(null,'Brain AI',?,0,1,'Brain Shop by Acobot','Male','1999/03/15','1m65','65kg','Pisces','Amarican')";
 }
