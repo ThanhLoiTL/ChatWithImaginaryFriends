@@ -49,7 +49,6 @@ public class InteractionFragment extends ListFragment {
         btnAddInteraction = view.findViewById(R.id.btn_add_interaction);
         addInteraction();
 
-
         return view;
     }
 
@@ -66,7 +65,7 @@ public class InteractionFragment extends ListFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == CODE_INTERACTION){
-            listInteractionModel = interactionAdapter.listInteractionModel = interactionDAO.getAll();
+            listInteractionModel = interactionAdapter.listInteractionModel = interactionDAO.findByHeart(heartModel.getId());
             interactionAdapter.notifyDataSetChanged();
         }
     }
@@ -97,7 +96,7 @@ public class InteractionFragment extends ListFragment {
                 if(id == null) {
                     Toast.makeText(v.getContext(), "False", Toast.LENGTH_LONG).show();
                 }
-                listInteractionModel = interactionAdapter.listInteractionModel = interactionDAO.getAll();
+                listInteractionModel = interactionAdapter.listInteractionModel = interactionDAO.findByHeart(heartModel.getId());
                 interactionAdapter.notifyDataSetChanged();
                 dialog.dismiss();
 
