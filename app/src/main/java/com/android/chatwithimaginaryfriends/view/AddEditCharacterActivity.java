@@ -39,6 +39,7 @@ import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;

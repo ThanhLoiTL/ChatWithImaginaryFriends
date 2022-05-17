@@ -2,6 +2,7 @@ package com.android.chatwithimaginaryfriends.util;
 
 import com.android.chatwithimaginaryfriends.model.InteractionModel;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class ResponseChat {
@@ -14,7 +15,7 @@ public class ResponseChat {
             List<String> listReply = ConvertUtil.stringToArray(interaction.getReplyWord());
 
             for (String word: listWord) {
-                if(message.contains(word.toLowerCase())){
+                if(message.contains(word.toLowerCase()) || word.toLowerCase().contains(message)){
                     int count = countWord(word);
                     if(count > max) {
                         max = count;
