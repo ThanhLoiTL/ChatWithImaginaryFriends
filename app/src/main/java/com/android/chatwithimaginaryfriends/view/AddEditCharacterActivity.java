@@ -47,6 +47,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Objects;
 
 public class AddEditCharacterActivity extends AppCompatActivity {
     private final int REQUEST_CODE_FOLDER = 666;
@@ -68,7 +69,6 @@ public class AddEditCharacterActivity extends AppCompatActivity {
     private BotModel botModel;
     private CharacterModel character;
 
-
     @SuppressLint("IntentReset")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,8 @@ public class AddEditCharacterActivity extends AppCompatActivity {
             setTheme(appTheme);
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setContentView(R.layout.activity_add_character);
 
         heartDAO = new HeartDAO();
@@ -165,7 +166,7 @@ public class AddEditCharacterActivity extends AppCompatActivity {
 
             if(_name.isEmpty() || _short_description.isEmpty() || _gender.isEmpty() || _birthday.isEmpty() || _height.isEmpty() ||
                     _weight.isEmpty() || _address.isEmpty() || _zodiac.isEmpty() || (character.getBot() == 0 && character.getHeart() == 0)){
-                Toast.makeText(v.getContext(), "Fill All Properties", Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
             }else{
                 character.setName(_name);
                 character.setShortDescription(_short_description);

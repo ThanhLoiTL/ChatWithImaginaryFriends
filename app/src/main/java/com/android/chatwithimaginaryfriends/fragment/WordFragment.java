@@ -70,20 +70,24 @@ public class WordFragment extends ListFragment {
         });
 
         btnOkTriggerWord.setOnClickListener(v -> {
-            if(listWord.get(position) != txtUpdateTriggerWord.getText().toString().trim()){
-                listWord.set(position, txtUpdateTriggerWord.getText().toString().trim());
-                String s = ConvertUtil.arrayToString(listWord);
-                interactionModel.setTriggerWord(s);
-                int isSuccess = interactionDAO.updateInteraction(interactionModel);
-                if (isSuccess == 1) {
-                    Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+            if(txtUpdateTriggerWord.getText().toString().trim().equals("")){
+                Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+            }else {
+                if (listWord.get(position) != txtUpdateTriggerWord.getText().toString().trim()) {
+                    listWord.set(position, txtUpdateTriggerWord.getText().toString().trim());
+                    String s = ConvertUtil.arrayToString(listWord);
+                    interactionModel.setTriggerWord(s);
+                    int isSuccess = interactionDAO.updateInteraction(interactionModel);
+                    if (isSuccess == 1) {
+                        Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                    interactionModel = interactionDAO.findOne(interactionModel.getId());
+                    listWord = wordAdapter.listWord = ConvertUtil.stringToArray(interactionModel.getTriggerWord());
+                    wordAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
-                interactionModel = interactionDAO.findOne(interactionModel.getId());
-                listWord = wordAdapter.listWord = ConvertUtil.stringToArray(interactionModel.getTriggerWord());
-                wordAdapter.notifyDataSetChanged();
-                dialog.dismiss();
             }
         });
 
@@ -125,20 +129,23 @@ public class WordFragment extends ListFragment {
             });
 
             btnOkTriggerWord.setOnClickListener(v -> {
-                listWord.add(txtAddTriggerWord.getText().toString().trim());
-                String s = ConvertUtil.arrayToString(listWord);
-                interactionModel.setTriggerWord(s);
-                int isSuccess = interactionDAO.updateInteraction(interactionModel);
-                if (isSuccess == 1) {
-                    Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                if(txtAddTriggerWord.getText().toString().trim().equals("")){
+                    Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+                }else {
+                    listWord.add(txtAddTriggerWord.getText().toString().trim());
+                    String s = ConvertUtil.arrayToString(listWord);
+                    interactionModel.setTriggerWord(s);
+                    int isSuccess = interactionDAO.updateInteraction(interactionModel);
+                    if (isSuccess == 1) {
+                        Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                    interactionModel = interactionDAO.findOne(interactionModel.getId());
+                    listWord = wordAdapter.listWord = ConvertUtil.stringToArray(interactionModel.getTriggerWord());
+                    wordAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
-                interactionModel = interactionDAO.findOne(interactionModel.getId());
-                listWord = wordAdapter.listWord = ConvertUtil.stringToArray(interactionModel.getTriggerWord());
-                wordAdapter.notifyDataSetChanged();
-                dialog.dismiss();
-
             });
             dialog.show();
         });

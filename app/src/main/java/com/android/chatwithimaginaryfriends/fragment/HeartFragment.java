@@ -82,17 +82,20 @@ public class HeartFragment extends ListFragment {
             });
 
             btnOkHeart.setOnClickListener(v -> {
-                HeartModel heart = new HeartModel();
-                heart.setHeartName(heartName.getText().toString().trim());
-                heart.setDescription(heartDescription.getText().toString().trim());
-                Long id = heartDAO.addHeart(heart);
-                if(id == null) {
-                    Toast.makeText(v.getContext(), "False", Toast.LENGTH_LONG).show();
+                if(heartName.getText().toString().trim().equals("") || heartDescription.getText().toString().trim().equals("")) {
+                    Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+                }else{
+                    HeartModel heart = new HeartModel();
+                    heart.setHeartName(heartName.getText().toString().trim());
+                    heart.setDescription(heartDescription.getText().toString().trim());
+                    Long id = heartDAO.addHeart(heart);
+                    if(id == null) {
+                        Toast.makeText(v.getContext(), "False", Toast.LENGTH_LONG).show();
+                    }
+                    listHeartModel = heartAdapter.listHeartModel = heartDAO.getAll();
+                    heartAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
-                listHeartModel = heartAdapter.listHeartModel = heartDAO.getAll();
-                heartAdapter.notifyDataSetChanged();
-                dialog.dismiss();
-
             });
             dialog.show();
         });

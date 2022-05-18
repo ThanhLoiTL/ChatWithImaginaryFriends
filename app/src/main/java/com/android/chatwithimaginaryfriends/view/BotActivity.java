@@ -16,6 +16,8 @@ import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.model.BotModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
 
+import java.util.Objects;
+
 public class BotActivity extends AppCompatActivity {
     private BotModel botModel;
     private ImageView imgAvatarBot;
@@ -33,7 +35,8 @@ public class BotActivity extends AppCompatActivity {
             setTheme(appTheme);
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setContentView(R.layout.activity_bot);
 
         init();

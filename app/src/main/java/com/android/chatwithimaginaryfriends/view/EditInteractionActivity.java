@@ -26,6 +26,7 @@ import com.android.chatwithimaginaryfriends.model.InteractionModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class EditInteractionActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getFragmentManager();
@@ -44,7 +45,8 @@ public class EditInteractionActivity extends AppCompatActivity {
             setTheme(appTheme);
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setContentView(R.layout.activity_edit_interaction);
         init();
 

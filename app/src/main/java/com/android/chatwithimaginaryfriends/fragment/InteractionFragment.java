@@ -90,17 +90,20 @@ public class InteractionFragment extends ListFragment {
             });
 
             btnOkInteraction.setOnClickListener(v -> {
-                InteractionModel interaction = new InteractionModel();
-                interaction.setIdHeart(heartModel.getId());
-                interaction.setTriggerWord(triggerWord.getText().toString().trim());
-                Long id = interactionDAO.addInteraction(interaction);
-                if(id == null) {
-                    Toast.makeText(v.getContext(), "False", Toast.LENGTH_LONG).show();
+                if(triggerWord.getText().toString().trim().equals("")){
+                    Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+                }else {
+                    InteractionModel interaction = new InteractionModel();
+                    interaction.setIdHeart(heartModel.getId());
+                    interaction.setTriggerWord(triggerWord.getText().toString().trim());
+                    Long id = interactionDAO.addInteraction(interaction);
+                    if (id == null) {
+                        Toast.makeText(v.getContext(), "False", Toast.LENGTH_LONG).show();
+                    }
+                    listInteractionModel = interactionAdapter.listInteractionModel = interactionDAO.findByHeart(heartModel.getId());
+                    interactionAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
-                listInteractionModel = interactionAdapter.listInteractionModel = interactionDAO.findByHeart(heartModel.getId());
-                interactionAdapter.notifyDataSetChanged();
-                dialog.dismiss();
-
             });
             dialog.show();
         });

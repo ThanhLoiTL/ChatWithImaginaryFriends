@@ -20,6 +20,8 @@ import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.fragment.InteractionFragment;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 
+import java.util.Objects;
+
 public class InteractionActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_FINAL_REPLY = 1145;
     private FragmentManager fragmentManager = getFragmentManager();
@@ -32,6 +34,7 @@ public class InteractionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int appTheme = app_preferences.getInt("theme", 0);
         if (appTheme == 0){
@@ -40,7 +43,8 @@ public class InteractionActivity extends AppCompatActivity {
             setTheme(appTheme);
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setContentView(R.layout.activity_interaction);
         mapping();
 

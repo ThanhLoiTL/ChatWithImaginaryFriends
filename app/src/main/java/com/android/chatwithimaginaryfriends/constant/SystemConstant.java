@@ -3,7 +3,7 @@ package com.android.chatwithimaginaryfriends.constant;
 import com.android.chatwithimaginaryfriends.R;
 
 public class SystemConstant {
-    public static final int DEFAULT_THEME = R.style.BottomSheetDialogTheme;
+    public static final int DEFAULT_THEME = R.style.Theme_ChatWithImaginaryFriends;
 
     public static final String TABLE_HEART = "hearts";
     public static final String COLUMN_ID = "id";

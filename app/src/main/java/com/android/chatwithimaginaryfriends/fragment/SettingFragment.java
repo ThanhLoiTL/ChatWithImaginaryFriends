@@ -26,6 +26,8 @@ public class SettingFragment extends Fragment {
     SharedPreferences sharedPreferences, appPreferences;
     SharedPreferences.Editor editor;
     int appTheme;
+
+    private Dialog dialog;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
@@ -40,7 +42,7 @@ public class SettingFragment extends Fragment {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = sharedPreferences.edit();
         theme.setOnClickListener(view -> {
-            Dialog dialog = new Dialog(view.getContext());
+            dialog = new Dialog(view.getContext());
             dialog.setContentView(R.layout.dialog_set_theme);
             if (dialog.getWindow() != null) {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -89,5 +91,13 @@ public class SettingFragment extends Fragment {
         Intent intent = new Intent(view.getContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(dialog != null){
+            dialog.dismiss();
+        }
     }
 }

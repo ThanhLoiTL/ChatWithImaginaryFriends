@@ -17,6 +17,8 @@ import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.fragment.FinalReplyFragment;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
 
+import java.util.Objects;
+
 public class EditFinalReplyActivity extends AppCompatActivity {
     private ImageButton btnSaveHeart;
     FragmentManager fragmentManager = getFragmentManager();
@@ -24,6 +26,7 @@ public class EditFinalReplyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int appTheme = app_preferences.getInt("theme", 0);
         if (appTheme == 0){
@@ -32,7 +35,8 @@ public class EditFinalReplyActivity extends AppCompatActivity {
             setTheme(appTheme);
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setContentView(R.layout.activity_edit_final_reply);
         mapping();
 

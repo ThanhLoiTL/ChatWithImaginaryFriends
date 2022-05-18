@@ -73,20 +73,24 @@ public class ReplyFragment extends ListFragment {
         });
 
         btnOkReplyPattern.setOnClickListener(v -> {
-            if(listReply.get(position) != txtUpdateReplyPattern.getText().toString().trim()){
-                listReply.set(position, txtUpdateReplyPattern.getText().toString().trim());
-                String s = ConvertUtil.arrayToString(listReply);
-                interactionModel.setReplyWord(s);
-                int isSuccess = interactionDAO.updateInteraction(interactionModel);
-                if (isSuccess == 1) {
-                    Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+            if(txtUpdateReplyPattern.getText().toString().trim().equals("")){
+                Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+            }else {
+                if (listReply.get(position) != txtUpdateReplyPattern.getText().toString().trim()) {
+                    listReply.set(position, txtUpdateReplyPattern.getText().toString().trim());
+                    String s = ConvertUtil.arrayToString(listReply);
+                    interactionModel.setReplyWord(s);
+                    int isSuccess = interactionDAO.updateInteraction(interactionModel);
+                    if (isSuccess == 1) {
+                        Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                    interactionModel = interactionDAO.findOne(interactionModel.getId());
+                    listReply = replyAdapter.listReply = ConvertUtil.stringToArray(interactionModel.getReplyWord());
+                    replyAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
-                interactionModel = interactionDAO.findOne(interactionModel.getId());
-                listReply = replyAdapter.listReply = ConvertUtil.stringToArray(interactionModel.getReplyWord());
-                replyAdapter.notifyDataSetChanged();
-                dialog.dismiss();
             }
         });
 
@@ -127,20 +131,23 @@ public class ReplyFragment extends ListFragment {
             });
 
             btnOkReplyPattern.setOnClickListener(v -> {
-                listReply.add(txtAddReplyPattern.getText().toString().trim());
-                String s = ConvertUtil.arrayToString(listReply);
-                interactionModel.setReplyWord(s);
-                int isSuccess = interactionDAO.updateInteraction(interactionModel);
-                if (isSuccess == 1) {
-                    Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                if(txtAddReplyPattern.getText().toString().trim().equals("")){
+                    Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+                }else {
+                    listReply.add(txtAddReplyPattern.getText().toString().trim());
+                    String s = ConvertUtil.arrayToString(listReply);
+                    interactionModel.setReplyWord(s);
+                    int isSuccess = interactionDAO.updateInteraction(interactionModel);
+                    if (isSuccess == 1) {
+                        Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                    interactionModel = interactionDAO.findOne(interactionModel.getId());
+                    listReply = replyAdapter.listReply = ConvertUtil.stringToArray(interactionModel.getReplyWord());
+                    replyAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
-                interactionModel = interactionDAO.findOne(interactionModel.getId());
-                listReply = replyAdapter.listReply = ConvertUtil.stringToArray(interactionModel.getReplyWord());
-                replyAdapter.notifyDataSetChanged();
-                dialog.dismiss();
-
             });
             dialog.show();
         });

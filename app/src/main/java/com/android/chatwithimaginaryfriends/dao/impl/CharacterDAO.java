@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
+import com.android.chatwithimaginaryfriends.dao.IChatDAO;
 import com.android.chatwithimaginaryfriends.database.Database;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
@@ -16,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterDAO implements ICharacterDAO {
-    Database database = MainActivity.database;
+    private final Database database = MainActivity.database;
+    private IChatDAO chatDAO;
 
     @Override
     public long addCharacter(CharacterModel character) {
@@ -58,10 +60,23 @@ public class CharacterDAO implements ICharacterDAO {
     }
 
     @Override
-    public void deleteCharacter(long id) {
+    public void deleteCharacter(long characterId) {
         SQLiteDatabase db = database.getWritableDatabase();
+        db.delete(SystemConstant.TABLE_CHAT, SystemConstant.COLUMN_CHAT_CHARACTER_ID + " = ?",
+                new String[] { String.valueOf(characterId) });
         db.delete(SystemConstant.TABLE_CHARACTER, SystemConstant.COLUMN_ID + " = ?",
-                new String[] { String.valueOf(id) });
+                new String[] { String.valueOf(characterId) });
+    }
+
+    @Override
+    public void deleteCharacterByHeart(long heartId) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        chatDAO = new ChatDAO();
+        for(CharacterModel character: findCharacterByHeart(heartId)){
+            chatDAO.deleteChatByCharacter(character.getId());
+        }
+        db.delete(SystemConstant.TABLE_CHARACTER, SystemConstant.COLUMN_CHAR_HEART + " = ?",
+                new String[] { String.valueOf(heartId) });
     }
 
     @SuppressLint("Range")
@@ -69,6 +84,36 @@ public class CharacterDAO implements ICharacterDAO {
     public List<CharacterModel> getAll() {
         List<CharacterModel> listCharacter = new ArrayList<>();
         String selectQuery = "SELECT  * FROM "+SystemConstant.TABLE_CHARACTER;
+
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                CharacterModel character = new CharacterModel();
+                character.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
+                character.setName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_NAME)));
+                character.setAvatar(cursor.getBlob(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_AVATAR)));
+                character.setHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEART)));
+                character.setBot(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BOT)));
+                character.setShortDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_SHORT_DESCRIPTION)));
+                character.setGender(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_GENDER)));
+                character.setBirthday(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BIRTHDAY)));
+                character.setHeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEIGHT)));
+                character.setWeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_WEIGHT)));
+                character.setZodiac(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ZODIAC)));
+                character.setAddress(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ADDRESS)));
+
+                listCharacter.add(character);
+            } while (cursor.moveToNext());
+        }
+        return listCharacter;
+    }
+
+    @SuppressLint("Range")
+    @Override
+    public List<CharacterModel> findCharacterByHeart(long heartId) {
+        List<CharacterModel> listCharacter = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM "+SystemConstant.TABLE_CHARACTER +" WHERE "+SystemConstant.COLUMN_CHAR_HEART +" = "+heartId;
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

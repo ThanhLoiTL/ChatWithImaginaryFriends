@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 public class ChatActivity extends AppCompatActivity {
@@ -69,6 +70,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int appTheme = app_preferences.getInt("theme", 0);
         if (appTheme == 0){
@@ -77,7 +79,8 @@ public class ChatActivity extends AppCompatActivity {
             setTheme(appTheme);
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setContentView(R.layout.activity_chat);
 
         init();

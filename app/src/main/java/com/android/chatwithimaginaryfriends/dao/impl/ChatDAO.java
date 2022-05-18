@@ -42,6 +42,13 @@ public class ChatDAO implements IChatDAO {
     }
 
     @Override
+    public void deleteChatByCharacter(long characterId) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        db.delete(SystemConstant.TABLE_CHAT, SystemConstant.COLUMN_CHAT_CHARACTER_ID + " = ?",
+                new String[] { String.valueOf(characterId) });
+    }
+
+    @Override
     public int updateChat(ChatModel chat) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues values = new ContentValues();

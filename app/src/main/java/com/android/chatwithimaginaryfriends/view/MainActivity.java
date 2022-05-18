@@ -20,6 +20,8 @@ import com.android.chatwithimaginaryfriends.fragment.HeartFragment;
 import com.android.chatwithimaginaryfriends.fragment.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigationMenu;
     public static Database database;
@@ -35,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         }else{
             setTheme(appTheme);
         }
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+
+        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_main);
         mapping();
         database = new Database(this);

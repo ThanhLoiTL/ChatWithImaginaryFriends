@@ -11,12 +11,15 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
+
+import java.util.Objects;
 
 
 public class EditHeartActivity extends AppCompatActivity {
@@ -37,7 +40,8 @@ public class EditHeartActivity extends AppCompatActivity {
             setTheme(appTheme);
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setContentView(R.layout.activity_edit_heart);
         mapping();
         heartDAO = new HeartDAO();
@@ -48,16 +52,20 @@ public class EditHeartActivity extends AppCompatActivity {
         heartDescription.setText(heartModel.getDescription());
 
         saveHeart.setOnClickListener(view -> {
-            heartModel.setHeartName(heartName.getText().toString().trim());
-            heartModel.setDescription(heartDescription.getText().toString().trim());
-            int isSuccess = heartDAO.updateHeart(heartModel);
-            if(isSuccess == 1){
-                //Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
-            }else{
-                //Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
+            if(heartName.getText().toString().trim().equals("") || heartDescription.getText().toString().trim().equals("")) {
+                Toast.makeText(this, "Please Fill All Properties", Toast.LENGTH_LONG).show();
+            }else {
+                heartModel.setHeartName(heartName.getText().toString().trim());
+                heartModel.setDescription(heartDescription.getText().toString().trim());
+                int isSuccess = heartDAO.updateHeart(heartModel);
+                if (isSuccess == 1) {
+                    //Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
+                } else {
+                    //Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
+                }
+                finish();
+                overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
             }
-            finish();
-            overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
         });
 
         createEditInteraction.setOnClickListener(view -> {

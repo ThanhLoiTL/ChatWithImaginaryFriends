@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.android.chatwithimaginaryfriends.constant.SystemConstant;
+import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
 import com.android.chatwithimaginaryfriends.database.Database;
 import com.android.chatwithimaginaryfriends.model.HeartModel;
@@ -16,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HeartDAO implements IHeartDAO {
-    Database database = MainActivity.database;
+    private final Database database = MainActivity.database;
+    private ICharacterDAO characterDAO;
 
     @Override
     public long addHeart(HeartModel heart) {
@@ -52,10 +54,16 @@ public class HeartDAO implements IHeartDAO {
     }
 
     @Override
-    public void deleteHeart(long id) {
+    public void deleteHeart(long heartId) {
         SQLiteDatabase db = database.getWritableDatabase();
+        characterDAO = new CharacterDAO();
+        for(int i=0;i<characterDAO.findCharacterByHeart(heartId).size();i++){
+            characterDAO.deleteCharacterByHeart(heartId);
+        }
+        db.delete(SystemConstant.TABLE_INTERACTION, SystemConstant.COLUMN_HEART_ID + " = ?",
+                new String[] { String.valueOf(heartId) });
         db.delete(SystemConstant.TABLE_HEART, SystemConstant.COLUMN_ID + " = ?",
-                new String[] { String.valueOf(id) });
+                new String[] { String.valueOf(heartId) });
     }
 
     @Override

@@ -73,20 +73,24 @@ public class FinalReplyFragment extends ListFragment {
         });
 
         btnOkFinalReply.setOnClickListener(v -> {
-            if(listFinalReply.get(position) != txtUpdateFinalReply.getText().toString()){
-                listFinalReply.set(position, txtUpdateFinalReply.getText().toString().trim());
-                String s = ConvertUtil.arrayToString(listFinalReply);
-                heartModel.setFinalReply(s);
-                int isSuccess = heartDAO.updateHeart(heartModel);
-                if (isSuccess == 1) {
-                    Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+            if(txtUpdateFinalReply.getText().toString().trim().equals("")){
+                Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+            }else {
+                if (listFinalReply.get(position) != txtUpdateFinalReply.getText().toString()) {
+                    listFinalReply.set(position, txtUpdateFinalReply.getText().toString().trim());
+                    String s = ConvertUtil.arrayToString(listFinalReply);
+                    heartModel.setFinalReply(s);
+                    int isSuccess = heartDAO.updateHeart(heartModel);
+                    if (isSuccess == 1) {
+                        Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                    heartModel = heartDAO.findOne(heartModel.getId());
+                    listFinalReply = finalReplyAdapter.listFinalReply = ConvertUtil.stringToArray(heartModel.getFinalReply());
+                    finalReplyAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
                 }
-                heartModel = heartDAO.findOne(heartModel.getId());
-                listFinalReply = finalReplyAdapter.listFinalReply = ConvertUtil.stringToArray(heartModel.getFinalReply());
-                finalReplyAdapter.notifyDataSetChanged();
-                dialog.dismiss();
             }
         });
 
@@ -128,20 +132,24 @@ public class FinalReplyFragment extends ListFragment {
             });
 
             btnOkFinalReply.setOnClickListener(v -> {
-                listFinalReply.add(txtAddFinalReply.getText().toString().trim());
-                String s = ConvertUtil.arrayToString(listFinalReply);
-                heartModel.setFinalReply(s);
-                int isSuccess = heartDAO.updateHeart(heartModel);
-                if (isSuccess == 1) {
-                    Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
-                }
-                heartModel = heartDAO.findOne(heartModel.getId());
-                listFinalReply = finalReplyAdapter.listFinalReply = ConvertUtil.stringToArray(heartModel.getFinalReply());
-                finalReplyAdapter.notifyDataSetChanged();
-                dialog.dismiss();
+                if(txtAddFinalReply.getText().toString().trim().equals("")){
+                    Toast.makeText(v.getContext(), "Please Fill All Properties", Toast.LENGTH_LONG).show();
+                }else {
 
+                    listFinalReply.add(txtAddFinalReply.getText().toString().trim());
+                    String s = ConvertUtil.arrayToString(listFinalReply);
+                    heartModel.setFinalReply(s);
+                    int isSuccess = heartDAO.updateHeart(heartModel);
+                    if (isSuccess == 1) {
+                        Toast.makeText(v.getContext(), "Update success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                    heartModel = heartDAO.findOne(heartModel.getId());
+                    listFinalReply = finalReplyAdapter.listFinalReply = ConvertUtil.stringToArray(heartModel.getFinalReply());
+                    finalReplyAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
+                }
             });
             dialog.show();
         });

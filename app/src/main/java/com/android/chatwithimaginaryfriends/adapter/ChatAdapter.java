@@ -1,10 +1,12 @@
 package com.android.chatwithimaginaryfriends.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +14,8 @@ import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.IChatDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.CharacterDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.ChatDAO;
+import com.android.chatwithimaginaryfriends.dao.impl.HeartDAO;
 import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.ChatModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
@@ -24,6 +28,7 @@ public class ChatAdapter extends BaseAdapter {
     public List<ChatModel> listChat;
 
     private ICharacterDAO characterDAO;
+    private IChatDAO chatDAO;
 
     public ChatAdapter(Context context, int layout, List<ChatModel> listChat) {
         this.context = context;
@@ -48,6 +53,7 @@ public class ChatAdapter extends BaseAdapter {
     private class ViewHolder {
         TextView txtCharacterName, txtMessage;
         ImageView imgAvatar;
+        ImageButton btnChatDelete;
     }
 
     @Override
@@ -61,6 +67,7 @@ public class ChatAdapter extends BaseAdapter {
             viewHolder.txtCharacterName = view.findViewById(R.id.txtCharacterName);
             viewHolder.txtMessage = view.findViewById(R.id.latest_message);
             viewHolder.imgAvatar = view.findViewById(R.id.imgAvatar);
+            viewHolder.btnChatDelete = view.findViewById(R.id.chat_delete);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
@@ -71,6 +78,22 @@ public class ChatAdapter extends BaseAdapter {
         viewHolder.txtMessage.setText(chatModel.getMessage());
         viewHolder.imgAvatar.setImageBitmap(ImageUtil.byteToBitmap(character.getAvatar()));
 
+        viewHolder.btnChatDelete.setOnClickListener(v -> {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+            alertDialog.setTitle("Notification!");
+            alertDialog.setIcon(null);
+            alertDialog.setMessage("Do you want to delete chat with " + character.getName() + " ?");
+            alertDialog.setPositiveButton("Yes", (dialogInterface, i1) -> {
+                chatDAO = new ChatDAO();
+                chatDAO.deleteChatByCharacter(character.getId());
+                listChat = chatDAO.findByChat();
+                this.notifyDataSetChanged();
+            });
+            alertDialog.setNegativeButton("No", (dialogInterface, i2) -> {
+
+            });
+            alertDialog.show();
+        });
         return view;
     }
 }
