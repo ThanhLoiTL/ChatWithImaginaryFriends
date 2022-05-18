@@ -68,14 +68,14 @@
             android:layout_weight="3"
             android:src="@drawable/choose_color_red" />
         <ImageButton
-            android:id="@+id/color_orange"
+            android:id="@+id/color_pink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             android:minWidth="32dp"
             android:minHeight="48dp"
             android:layout_weight="3"
-            android:src="@drawable/choose_color_orange" />
+            android:src="@drawable/choose_color_pink" />
         <ImageButton
             android:id="@+id/color_black"
             android:layout_weight="3"

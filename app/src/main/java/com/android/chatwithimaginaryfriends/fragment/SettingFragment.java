@@ -54,17 +54,6 @@ public class SettingFragment extends Fragment {
 
             dialog.show();
         });
-
-
-//        btnRed.setOnClickListener(view -> {
-//            editor.putInt("theme",R.style.Theme_ChatWithImaginaryFriends1);
-//            editor.commit();
-//
-//            Intent intent = new Intent(view.getContext(), MainActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-//
-//        });
     }
 
     private void setColor(Dialog dialog){
@@ -72,7 +61,7 @@ public class SettingFragment extends Fragment {
         ImageButton colorGreen = dialog.findViewById(R.id.color_green);
         ImageButton colorBlue = dialog.findViewById(R.id.color_blue);
         ImageButton colorRed = dialog.findViewById(R.id.color_red);
-        ImageButton colorOrange = dialog.findViewById(R.id.color_orange);
+        ImageButton colorPink = dialog.findViewById(R.id.color_pink);
         ImageButton colorBlack = dialog.findViewById(R.id.color_black);
 
         colorViolet.setOnClickListener(view -> {
@@ -103,8 +92,8 @@ public class SettingFragment extends Fragment {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
-        colorOrange.setOnClickListener(view -> {
-            editor.putInt("theme",R.style.Theme_Orange);
+        colorPink.setOnClickListener(view -> {
+            editor.putInt("theme",R.style.Theme_Pink);
             editor.commit();
             Intent intent = new Intent(view.getContext(), MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

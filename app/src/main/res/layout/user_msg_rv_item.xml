@@ -33,7 +33,6 @@
             android:paddingBottom="7dp"
             android:text="Sender Message Display Here "
             android:textColor="@color/white"
-            android:textSize="18sp">
-        </TextView>
+            android:textSize="18sp" />
     </RelativeLayout>
 </RelativeLayout>
