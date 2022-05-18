@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="Select Your Character"
         android:textSize="24sp"
-        android:textColor="@color/root"
+        android:textColor="?attr/root"
         android:gravity="center"
         android:textStyle="bold"
         android:padding="12dp"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:text="CANCEL"
-        android:textColor="@color/root"
+        android:textColor="?attr/root"
         android:textStyle="bold"
         android:layout_margin="20dp"
         android:gravity="right"/>

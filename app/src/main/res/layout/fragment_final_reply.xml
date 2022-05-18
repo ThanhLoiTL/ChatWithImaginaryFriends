@@ -14,9 +14,9 @@
             android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textSize="@dimen/text_size"
             android:text="Final reply"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size" />
 
         <ImageButton
             android:id="@+id/btn_add_final_reply"

@@ -5,19 +5,23 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="MANAGE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application xmlns:tools="http://schemas.android.com/tools"
-        android:label="@string/app_name"
-        android:icon="@drawable/network_intelligence_48px"
         android:allowBackup="true"
+        android:icon="@drawable/network_intelligence_48px"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatWithImaginaryFriends"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="allowBackup,supportsRtl">
+
+        <activity
+            android:name=".view.BotActivity"
+            android:exported="false" />
         <activity
             android:name=".view.EditFinalReplyActivity"
             android:exported="false" />

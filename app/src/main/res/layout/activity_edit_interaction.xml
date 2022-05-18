@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true"
             android:padding="12dp"
             android:text="Trigger and reply"
-            android:textColor="@color/root"
+            android:textColor="?attr/root"
             android:textSize="24sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />

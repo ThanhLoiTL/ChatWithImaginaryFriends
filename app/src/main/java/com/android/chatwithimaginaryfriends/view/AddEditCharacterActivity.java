@@ -8,12 +8,14 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
@@ -28,6 +30,7 @@ import android.widget.Toast;
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.adapter.ComboBoxBotAdapter;
 import com.android.chatwithimaginaryfriends.adapter.ComboBoxHeartAdapter;
+import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.dao.IBotDAO;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.IHeartDAO;
@@ -70,6 +73,13 @@ public class AddEditCharacterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int appTheme = app_preferences.getInt("theme", 0);
+        if (appTheme == 0){
+            setTheme(SystemConstant.DEFAULT_THEME);
+        }else{
+            setTheme(appTheme);
+        }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_add_character);
@@ -217,7 +227,6 @@ public class AddEditCharacterActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     private void setView(CharacterModel character) {
         if(character.getId() != null){
             characterName.setText(character.getName());

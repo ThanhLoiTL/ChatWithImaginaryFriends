@@ -3,8 +3,10 @@ package com.android.chatwithimaginaryfriends.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.adapter.BotAPIAdapter;
+import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.dao.IBotDAO;
 import com.android.chatwithimaginaryfriends.dao.ICharacterDAO;
 import com.android.chatwithimaginaryfriends.dao.IChatDAO;
@@ -66,6 +69,13 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int appTheme = app_preferences.getInt("theme", 0);
+        if (appTheme == 0){
+            setTheme(SystemConstant.DEFAULT_THEME);
+        }else{
+            setTheme(appTheme);
+        }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_chat);

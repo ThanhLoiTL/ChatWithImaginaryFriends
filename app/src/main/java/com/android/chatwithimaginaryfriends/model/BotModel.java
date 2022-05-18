@@ -1,6 +1,8 @@
 package com.android.chatwithimaginaryfriends.model;
 
-public class BotModel {
+import java.io.Serializable;
+
+public class BotModel implements Serializable {
     private Long id;
     private String name;
     private String description;

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Edit Final Reply"
         android:textSize="24sp"
-        android:textColor="@color/root"
+        android:textColor="?attr/root"
         android:gravity="center"
         android:textStyle="bold"
         android:padding="12dp"
@@ -36,7 +36,7 @@
             android:layout_marginEnd="20dp"
             android:layout_toEndOf="@+id/btn_delete"
             android:text="OK"
-            android:textColor="@color/root"
+            android:textColor="?attr/root"
             android:textStyle="bold" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/btn_ok"
             android:text="CANCEL"
-            android:textColor="@color/root"
+            android:textColor="?attr/root"
             android:textStyle="bold" />
 
         <TextView
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DELETE"
-            android:textColor="@color/root"
+            android:textColor="?attr/root"
             android:textStyle="bold" />
 
     </RelativeLayout>

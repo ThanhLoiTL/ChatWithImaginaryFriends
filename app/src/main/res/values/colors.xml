@@ -7,9 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="root">#8a3ab9</color>
+    <color name="violet">#8a3ab9</color>
     <color name="checked_nav">#C0C0C1</color>
     <color name="back_color">#1C3B63</color>
     <color name="fab_color">#6B6AFF</color>
-    <color name="red">#E10012</color>
+    <color name="green">#1FDA27</color>
+    <color name="blue">#2196F3</color>
+    <color name="red">#F84336</color>
+    <color name="orange">#FF9800</color>
 </resources>
