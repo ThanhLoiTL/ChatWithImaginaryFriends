@@ -185,12 +185,13 @@ public class AddEditCharacterActivity extends AppCompatActivity {
                 }else {
                     int isSuccess = characterDAO.updateCharacter(character);
                     if(isSuccess == 1){
-                        Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
                     }
                 }
                 finish();
+                overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
             }
 
         });

@@ -54,12 +54,14 @@ public class InteractionActivity extends AppCompatActivity {
 
         btnSaveHeart.setOnClickListener(view -> {
             finish();
+            overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
         });
 
         finalReply.setOnClickListener(view -> {
             Intent intent1 = new Intent(this, EditFinalReplyActivity.class);
             intent1.putExtra("Heart", heartModel);
             startActivityForResult(intent1, REQUEST_CODE_FINAL_REPLY);
+            overridePendingTransition(R.anim.anim_enter_from_right, R.anim.anim_exit_out_left);
         });
 
     }

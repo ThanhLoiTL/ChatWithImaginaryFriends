@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Window;
@@ -15,7 +14,6 @@ import android.widget.ImageView;
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.constant.SystemConstant;
 import com.android.chatwithimaginaryfriends.model.BotModel;
-import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.util.ImageUtil;
 
 public class BotActivity extends AppCompatActivity {
@@ -47,6 +45,7 @@ public class BotActivity extends AppCompatActivity {
 
         btnBackBot.setOnClickListener(view -> {
             finish();
+            overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
         });
     }
 

@@ -11,7 +11,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.constant.SystemConstant;
@@ -53,17 +52,19 @@ public class EditHeartActivity extends AppCompatActivity {
             heartModel.setDescription(heartDescription.getText().toString().trim());
             int isSuccess = heartDAO.updateHeart(heartModel);
             if(isSuccess == 1){
-                Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Update success", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show();
             }
             finish();
+            overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
         });
 
         createEditInteraction.setOnClickListener(view -> {
             Intent intentInteraction = new Intent(EditHeartActivity.this, InteractionActivity.class);
             intentInteraction.putExtra("HeartModel", heartModel);
             startActivityForResult(intentInteraction, CODE_INTERACTION);
+            overridePendingTransition(R.anim.anim_enter_from_right, R.anim.anim_exit_out_left);
         });
     }
 

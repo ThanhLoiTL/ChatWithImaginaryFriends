@@ -108,6 +108,8 @@ public class ChatActivity extends AppCompatActivity {
 
         btnBackChat.setOnClickListener(view -> {
             finish();
+            overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
+
         });
     }
     private class HeartAPI extends AsyncTask<List<ChatModel>, Void, String> {

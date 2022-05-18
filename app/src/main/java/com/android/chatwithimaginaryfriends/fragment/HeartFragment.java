@@ -1,5 +1,6 @@
 package com.android.chatwithimaginaryfriends.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ListFragment;
 import android.content.Intent;
@@ -9,8 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -55,6 +54,7 @@ public class HeartFragment extends ListFragment {
         }
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -62,6 +62,7 @@ public class HeartFragment extends ListFragment {
         Intent intent = new Intent(getActivity(), EditHeartActivity.class);
         intent.putExtra("HeartModel", heart);
         startActivityForResult(intent, CODE_HEART);
+        getActivity().overridePendingTransition(R.anim.anim_enter_from_right, R.anim.anim_exit_out_left);
     }
 
     private void addHeart() {

@@ -60,6 +60,7 @@ public class EditInteractionActivity extends AppCompatActivity {
 
         btnSaveInteraction.setOnClickListener(view -> {
             finish();
+            overridePendingTransition(R.anim.anim_enter_from_left, R.anim.anim_exit_out_right);
         });
     }
     private void init() {

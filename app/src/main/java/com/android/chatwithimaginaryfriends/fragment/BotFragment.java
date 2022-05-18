@@ -45,6 +45,7 @@ public class BotFragment extends ListFragment {
             BotModel bot = listBotModel.get(position);
             intent.putExtra("BotModel", bot);
             startActivityForResult(intent, CODE_BOT);
+            getActivity().overridePendingTransition(R.anim.anim_enter_from_right, R.anim.anim_exit_out_left);
         }catch (Exception e){
             e.printStackTrace();
         }

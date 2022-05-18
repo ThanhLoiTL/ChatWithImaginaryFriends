@@ -59,6 +59,7 @@ public class InteractionFragment extends ListFragment {
         Intent intent = new Intent(getActivity(), EditInteractionActivity.class);
         intent.putExtra("InteractionModel", interaction);
         startActivityForResult(intent, CODE_INTERACTION);
+        getActivity().overridePendingTransition(R.anim.anim_enter_from_right, R.anim.anim_exit_out_left);
     }
 
     @Override

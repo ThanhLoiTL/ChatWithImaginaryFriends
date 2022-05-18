@@ -56,6 +56,7 @@ public class CharacterFragment extends ListFragment {
             CharacterModel character = listCharacterModel.get(position);
             intent.putExtra("CharacterModel", character);
             startActivityForResult(intent, CODE_CHARACTER);
+            getActivity().overridePendingTransition(R.anim.anim_enter_from_right, R.anim.anim_exit_out_left);
         }catch (Exception e){
             e.printStackTrace();
         }

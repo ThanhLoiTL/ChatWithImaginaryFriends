@@ -61,6 +61,7 @@ public class ChatFragment extends ListFragment {
         CharacterModel character = characterDAO.findOne(listChat.get(position).getCharterId());
         intent.putExtra("Character", character);
         startActivityForResult(intent, CODE_CHAT);
+        getActivity().overridePendingTransition(R.anim.anim_enter_from_right, R.anim.anim_exit_out_left);
     }
 
     @Override
