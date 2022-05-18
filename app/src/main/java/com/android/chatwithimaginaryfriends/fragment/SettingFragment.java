@@ -65,46 +65,29 @@ public class SettingFragment extends Fragment {
         ImageButton colorBlack = dialog.findViewById(R.id.color_black);
 
         colorViolet.setOnClickListener(view -> {
-            editor.putInt("theme",R.style.Theme_ChatWithImaginaryFriends);
-            editor.commit();
-            Intent intent = new Intent(view.getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            setTheme(view, R.style.Theme_ChatWithImaginaryFriends);
         });
         colorGreen.setOnClickListener(view -> {
-            editor.putInt("theme",R.style.Theme_Green);
-            editor.commit();
-            Intent intent = new Intent(view.getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            setTheme(view, R.style.Theme_Green);
         });
         colorBlue.setOnClickListener(view -> {
-            editor.putInt("theme",R.style.Theme_Blue);
-            editor.commit();
-            Intent intent = new Intent(view.getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            setTheme(view, R.style.Theme_Blue);
         });
         colorRed.setOnClickListener(view -> {
-            editor.putInt("theme",R.style.Theme_Red);
-            editor.commit();
-            Intent intent = new Intent(view.getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            setTheme(view, R.style.Theme_Red);
         });
         colorPink.setOnClickListener(view -> {
-            editor.putInt("theme",R.style.Theme_Pink);
-            editor.commit();
-            Intent intent = new Intent(view.getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            setTheme(view, R.style.Theme_Pink);
         });
         colorBlack.setOnClickListener(view -> {
-            editor.putInt("theme",R.style.Theme_Black);
-            editor.commit();
-            Intent intent = new Intent(view.getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            setTheme(view, R.style.Theme_Black);
         });
+    }
+    private void setTheme(View view, int theme) {
+        editor.putInt("theme",theme);
+        editor.commit();
+        Intent intent = new Intent(view.getContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

@@ -10,29 +10,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageButton
+            android:id="@+id/btn_back_bot"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
         <TextView
             android:id="@+id/title_character"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/btn_back_bot"
             android:padding="12dp"
-            android:text="BOT"
+            android:text="View BOT"
             android:textColor="?attr/root"
             android:textSize="24sp"
             android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/btn_save_bot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:background="@null"
-            android:contentDescription="Search"
-            android:padding="12dp"
-            android:src="@drawable/outline_save_alt_24"
-            tools:ignore="SpeakableTextPresentCheck" />
 
         <LinearLayout
             android:layout_width="match_parent"

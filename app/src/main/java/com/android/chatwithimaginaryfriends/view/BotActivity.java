@@ -22,7 +22,7 @@ public class BotActivity extends AppCompatActivity {
     private BotModel botModel;
     private ImageView imgAvatarBot;
     private EditText botName, botDescription;
-    private ImageButton btnSaveBot;
+    private ImageButton btnBackBot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class BotActivity extends AppCompatActivity {
 
         setView(botModel);
 
-        btnSaveBot.setOnClickListener(view -> {
+        btnBackBot.setOnClickListener(view -> {
             finish();
         });
     }
@@ -62,6 +62,6 @@ public class BotActivity extends AppCompatActivity {
         imgAvatarBot = findViewById(R.id.img_avatar_bot);
         botName = findViewById(R.id.bot_name);
         botDescription = findViewById(R.id.bot_description);
-        btnSaveBot = findViewById(R.id.btn_save_bot);
+        btnBackBot = findViewById(R.id.btn_back_bot);
     }
 }
