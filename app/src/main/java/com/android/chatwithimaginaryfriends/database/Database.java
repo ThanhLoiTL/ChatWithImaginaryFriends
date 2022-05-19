@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Database extends SQLiteOpenHelper {
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
     public static final String DATABASE_NAME = "ChatWithImaginaryFriends";
     private static final int DATABASE_VERSION = 1;
@@ -112,7 +113,7 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(INSERT_CHARACTER_2,new Object[]{addImage(R.drawable.image_brainbot)});
     }
 
-    private static final String INSERT_BOT_1 = "INSERT INTO bots values(1,'Brain Bot','This is a brain bot',?,'http://api.brainshop.ai/get?bid=165426&key=8S10YTsIlEFSMJKk&uid=[uid]&msg=')";
+    private static final String INSERT_BOT_1 = "INSERT INTO bots values(1,'Brain Bot','This is a brain bot',?,'http://api.brainshop.ai/get?bid=165426&key=8S10YTsIlEFSMJKk&uid=thanhloi&msg=')";
     private static final String INSERT_HEART_1 = "INSERT INTO hearts values(null,'Mora','A friendly coyote. She is supposed to be on of my Original characters, she lives in Harmonia with her friend. Her friends are her family. The members of her family Belinda, may,...','I don''t know that,I do not understand,;))')";
     private static final String INSERT_HEART_2 = "INSERT INTO hearts values(null,'Marvel','The films of the Marvel Cinematic Universe are a series of superhero works shown on the big screen, based on characters from the Marvel Comics.','I don''t know that,I do not understand,;))')";
     private static final String INSERT_INTER_1 = "INSERT INTO interactions values(null,1,'Hey','Yeah! You can talk to me anytime'), " +
@@ -125,7 +126,7 @@ public class Database extends SQLiteOpenHelper {
             "(null,1,'glad','Me too'),(null,1,'give you food,some food','Give me a burger!'),(null,1,'i hate you','Then why are you taking to me?'),(null,1,'tired','Maybe you should take nap')," +
             "(null,1,'hehe,haha,hoho,hihi',';),hehe,haha,hoho,hihi'),(null,1,'nothing,no','Okey'),(null,1,'hungry','I will give you a burger'),(null,1,'morning','Good moring'),(null,1,'afternoon','Good afternoon')," +
             "(null,1,'meaning of life','Good question'),(null,1,'What are you doing','Taking to you'),(null,1,'I dont know','We cant know everything'),(null,1,'Why are you crying','Its been stressful day.')," +
-            "(null,1,'sleep','(yawn)...'),(null,1,'sleep','(yawn)...'),(null,1,'goodnight','Goodnight :)'),(null,1,'love music','Music is healing'),(null,1,'agree','Yess'),(null,1,'perfect day','You sound happy and cheery')," +
+            "(null,1,'sleep','(yawn)...'),(null,1,'goodnight','Goodnight :)'),(null,1,'love music','Music is healing'),(null,1,'agree','Yess'),(null,1,'perfect day','You sound happy and cheery')," +
             "(null,1,'sick','Sick? Oh no'),(null,1,'lonely','I understand'),(null,1,'eating','Mmmm'),(null,1,'relax','I will relax with you'),(null,1,'talking','Okey,Sure')";
 
     private static final String INSERT_INTER_2 = "INSERT INTO interactions values " +
@@ -213,8 +214,7 @@ public class Database extends SQLiteOpenHelper {
         @SuppressLint("UseCompatLoadingForDrawables") Bitmap bm = ((BitmapDrawable) context.getResources().getDrawable(image)).getBitmap();
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, os);
-        byte[] b = os.toByteArray();
-        return b;
+        return os.toByteArray();
     }
 
     private static final String INSERT_CHARACTER_1 = "INSERT INTO characters values(null,'Mora',?,1,0,'Chat with me everywhere','Female','2001/03/04','1m55','45kg','Pisces','Japan')";
