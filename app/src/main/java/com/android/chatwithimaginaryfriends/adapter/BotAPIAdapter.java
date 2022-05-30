@@ -2,26 +2,20 @@ package com.android.chatwithimaginaryfriends.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.chatwithimaginaryfriends.R;
 import com.android.chatwithimaginaryfriends.dao.IChatDAO;
 import com.android.chatwithimaginaryfriends.dao.impl.ChatDAO;
-import com.android.chatwithimaginaryfriends.model.CharacterModel;
 import com.android.chatwithimaginaryfriends.model.ChatModel;
-import com.android.chatwithimaginaryfriends.util.ConvertUtil;
 import com.android.chatwithimaginaryfriends.view.ChatActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 

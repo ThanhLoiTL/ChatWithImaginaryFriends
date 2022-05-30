@@ -26,17 +26,17 @@ public class SettingFragment extends Fragment {
     SharedPreferences sharedPreferences, appPreferences;
     SharedPreferences.Editor editor;
     int appTheme;
-
     private Dialog dialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
         theme = view.findViewById(R.id.theme);
-        editThem();
+        editTheme();
         return view;
     }
 
-    private void editThem() {
+    private void editTheme() {
         appPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         appTheme = appPreferences.getInt("theme", 0);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -85,6 +85,7 @@ public class SettingFragment extends Fragment {
             setTheme(view, R.style.Theme_Black);
         });
     }
+
     private void setTheme(View view, int theme) {
         editor.putInt("theme",theme);
         editor.commit();

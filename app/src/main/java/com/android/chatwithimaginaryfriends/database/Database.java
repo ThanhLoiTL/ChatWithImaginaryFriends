@@ -117,7 +117,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String INSERT_HEART_1 = "INSERT INTO hearts values(null,'Mora','A friendly coyote. She is supposed to be on of my Original characters, she lives in Harmonia with her friend. Her friends are her family. The members of her family Belinda, may,...','I don''t know that,I do not understand,;))')";
     private static final String INSERT_HEART_2 = "INSERT INTO hearts values(null,'Marvel','The films of the Marvel Cinematic Universe are a series of superhero works shown on the big screen, based on characters from the Marvel Comics.','I don''t know that,I don''t understand,;))')";
     private static final String INSERT_INTER_1 = "INSERT INTO interactions values(null,1,'Hey','Yeah! You can talk to me anytime'), " +
-            "(null,1,'I love you','Aw'), (null,1,'Hi,hello,hey','Hellooo'),(null,1,'good','Great!'),(null,1,'feel upset,angry,sad','What happened?')," +
+            "(null,1,'I love you','Aw'), (null,1,'Hi you,hello,hey','Hellooo'),(null,1,'good','Great!'),(null,1,'feel upset,angry,sad','What happened?')," +
             "(null,1,'go for a hike?,go for a walk?','HELL YES'),(null,1,'Awesome,Great,Nice,Amazing,Hooray',':)'),(null,1,'hurt','How?'),(null,1,'hurt','How?')," +
             "(null,1,'understands','How can you be sure?'),(null,1,'FUCK,vent,shitty day,Oh shit','Whoa whoa whoa,Slow down,Take a deep breath')," +
             "(null,1,'How are you,How ya doin','I''m okay I guess'),(null,1,'I can''t stop thinking of my ex','Dont let toxic people into your life'),(null,1,'So happy','Meeee tooooooo')," +
