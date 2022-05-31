@@ -9,7 +9,7 @@
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12:00AM"
+        android:text="@string/_12_00am"
         android:layout_margin="10dp"
         android:visibility="gone"
         android:layout_centerHorizontal="true"/>
@@ -32,7 +32,7 @@
             android:paddingTop="7dp"
             android:paddingRight="7dp"
             android:paddingBottom="7dp"
-            android:text="Sender Message Display Here "
+            android:text="@string/sender_message_display_here"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </RelativeLayout>

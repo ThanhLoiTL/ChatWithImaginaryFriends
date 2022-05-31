@@ -6,7 +6,7 @@
         android:id="@+id/item_selected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Item"
+        android:text="@string/item"
         android:layout_toStartOf="@+id/img_drop_down"
         android:textColor="@color/black"
         android:padding="10dp"/>
@@ -17,5 +17,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_drop_down_24"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/appear" />
 </RelativeLayout>

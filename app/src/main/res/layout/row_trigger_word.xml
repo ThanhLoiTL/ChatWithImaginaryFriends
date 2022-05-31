@@ -22,7 +22,7 @@
             android:paddingTop="7dp"
             android:paddingEnd="10dp"
             android:paddingBottom="7dp"
-            android:text="Word"
+            android:text="@string/word"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </RelativeLayout>

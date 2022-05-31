@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/relative_layout_add_trigger_word">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -14,18 +15,19 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="@string/trigger_words"
+            android:textSize="20sp"
             android:textColor="@color/white" />
 
         <ImageButton
             android:id="@+id/btn_add_trigger_word"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@null"
             android:contentDescription="@string/add"
             android:padding="12dp"
-            android:src="@drawable/ic_add_white_24"/>
+            android:src="@drawable/ic_add_white_24" />
     </RelativeLayout>
 
     <ListView

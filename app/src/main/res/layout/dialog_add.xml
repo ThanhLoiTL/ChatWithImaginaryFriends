@@ -8,7 +8,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Interaction"
+        android:text="@string/add_interaction"
         android:textSize="24sp"
         android:textColor="?attr/root"
         android:layout_marginBottom="20dp"
@@ -21,7 +21,9 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:layout_margin="10dp"
-        android:hint="Please input a trigger word"/>
+        android:hint="@string/please_input_a_trigger_word"
+        android:autofillHints=""
+        android:inputType="text" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +36,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="100dp"
-            android:text="OK"
+            android:text="@string/ok"
             android:textColor="?attr/root"
             android:textStyle="bold" />
 
@@ -44,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:text="CANCEL"
+            android:text="@string/cancel"
             android:textColor="?attr/root"
             android:textStyle="bold" />
     </RelativeLayout>

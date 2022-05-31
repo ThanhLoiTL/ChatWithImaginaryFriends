@@ -23,7 +23,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/card_view_Avatar"
             android:layout_centerVertical="true"
-            android:text="Character Name"
+            android:text="@string/character_name"
             android:textColor="#0b0b0b"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -42,7 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_person_round" />
+                android:src="@drawable/ic_person_round"
+                android:contentDescription="@string/avatar" />
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>

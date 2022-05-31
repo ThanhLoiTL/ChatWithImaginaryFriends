@@ -16,11 +16,11 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:padding="12dp"
-            android:text="Trigger and reply"
+            android:text="@string/trigger_and_reply"
+            android:layout_toStartOf="@+id/btn_save_interaction"
             android:textColor="?attr/root"
             android:textSize="24sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:textStyle="bold"/>
 
         <ImageButton
             android:id="@+id/btn_save_interaction"

@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="Name Display Here"
+            android:text="@string/name_display_here"
             android:textColor="#0b0b0b"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -30,7 +30,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="3dp"
             android:maxLines="1"
-            android:text="Status Displays here"
+            android:text="@string/status_displays_here"
             android:textColor="#6a6a6a"
             android:textSize="12sp" />
 
@@ -51,7 +51,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:background="@null"
-        android:contentDescription="Option"
+        android:contentDescription="@string/delete"
         android:minWidth="32dp"
         android:minHeight="48dp"
         android:src="@drawable/ic_delete_outline_24" />

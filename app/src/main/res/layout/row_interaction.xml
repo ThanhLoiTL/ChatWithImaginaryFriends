@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="Trigger words"
+            android:text="@string/trigger_words"
             android:textColor="#0b0b0b"
             android:layout_marginEnd="40dp"
             android:textSize="16sp"/>
@@ -29,7 +29,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="40dp"
-            android:text="Status Displays here"
+            android:text="@string/status_displays_here"
             android:textColor="#6a6a6a"
             android:textSize="14sp" />
 
@@ -50,7 +50,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:background="@null"
-        android:contentDescription="Delete interaction"
+        android:contentDescription="@string/delete"
         android:minWidth="32dp"
         android:minHeight="48dp"
         android:src="@drawable/ic_delete_outline_24" />
