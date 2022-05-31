@@ -13,7 +13,7 @@
             android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Trigger words"
+            android:text="@string/trigger_words"
             android:textColor="@color/white" />
 
         <ImageButton
@@ -23,7 +23,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@null"
-            android:contentDescription="Add trigger word"
+            android:contentDescription="@string/add"
             android:padding="12dp"
             android:src="@drawable/ic_add_white_24"/>
     </RelativeLayout>

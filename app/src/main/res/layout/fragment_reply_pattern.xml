@@ -14,9 +14,9 @@
             android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Reply patterns"
+            android:text="@string/reply_patterns"
             android:textColor="@color/white"
-            android:textSize="16dp"/>
+            android:textSize="16sp"/>
 
         <ImageButton
             android:id="@+id/btn_add_reply_pattern"
@@ -25,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@null"
-            android:contentDescription="Add reply"
+            android:contentDescription="@string/add"
             android:padding="12dp"
             android:src="@drawable/ic_add_white_24"/>
     </RelativeLayout>

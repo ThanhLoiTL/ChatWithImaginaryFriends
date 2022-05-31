@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.android.chatwithimaginaryfriends">
+    package="com.hulo.chatwithimaginaryfriends">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="allowBackup,supportsRtl">
-        <activity android:name=".view.SplashActivity"
+        <activity android:name="com.hulo.chatwithimaginaryfriends.view.SplashActivity"
             android:theme="@style/Theme.Splash"
             android:exported="true">
             <intent-filter>
@@ -31,28 +31,28 @@
         </activity>
 
         <activity
-            android:name=".view.BotActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.BotActivity"
             android:exported="false" />
         <activity
-            android:name=".view.EditFinalReplyActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.EditFinalReplyActivity"
             android:exported="false" />
         <activity
-            android:name=".view.AddEditCharacterActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.AddEditCharacterActivity"
             android:exported="false" />
         <activity
-            android:name=".view.EditInteractionActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.EditInteractionActivity"
             android:exported="false" />
         <activity
-            android:name=".view.InteractionActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.InteractionActivity"
             android:exported="false" />
         <activity
-            android:name=".view.EditHeartActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.EditHeartActivity"
             android:exported="false" />
         <activity
-            android:name=".view.ChatActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name="com.hulo.chatwithimaginaryfriends.view.MainActivity"
             android:exported="false">
 
         </activity>

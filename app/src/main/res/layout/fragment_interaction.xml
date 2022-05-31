@@ -14,7 +14,7 @@
             android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Interaction list"
+            android:text="@string/interaction_list"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size" />
 
@@ -25,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@null"
-            android:contentDescription="Add Interaction"
+            android:contentDescription="@string/add"
             android:padding="12dp"
             android:src="@drawable/ic_add_white_24" />
     </RelativeLayout>
