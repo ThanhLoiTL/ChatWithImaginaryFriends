@@ -24,7 +24,7 @@ public class BotDAO implements IBotDAO {
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 BotModel bot = new BotModel();
                 bot.setId(cursor.getLong((cursor.getColumnIndex(SystemConstant.COLUMN_ID))));
@@ -35,6 +35,7 @@ public class BotDAO implements IBotDAO {
                 listBot.add(bot);
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return listBot;
     }
 
@@ -45,14 +46,17 @@ public class BotDAO implements IBotDAO {
         String selectQuery = "SELECT  * FROM " + SystemConstant.TABLE_BOT + " WHERE "
                 + SystemConstant.COLUMN_ID + " = " + id;
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor != null)
+        BotModel bot = null;
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-        BotModel bot = new BotModel();
-        bot.setId(cursor.getLong((cursor.getColumnIndex(SystemConstant.COLUMN_ID))));
-        bot.setName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_NAME)));
-        bot.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_DESCRIPTION)));
-        bot.setAvatar(cursor.getBlob(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_AVATAR)));
-        bot.setUrl(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_URL)));
+            bot = new BotModel();
+            bot.setId(cursor.getLong((cursor.getColumnIndex(SystemConstant.COLUMN_ID))));
+            bot.setName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_NAME)));
+            bot.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_DESCRIPTION)));
+            bot.setAvatar(cursor.getBlob(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_AVATAR)));
+            bot.setUrl(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_BOT_URL)));
+            cursor.close();
+        }
         return bot;
     }
 }

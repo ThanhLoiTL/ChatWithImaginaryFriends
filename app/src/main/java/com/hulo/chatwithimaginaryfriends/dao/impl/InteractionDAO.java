@@ -33,20 +33,20 @@ public class InteractionDAO implements IInteractionDAO {
     @Override
     public List<InteractionModel> getAll() {
         List<InteractionModel> listInteraction = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM "+ SystemConstant.TABLE_INTERACTION;
+        String selectQuery = "SELECT * FROM "+ SystemConstant.TABLE_INTERACTION;
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 InteractionModel interaction = new InteractionModel();
                 interaction.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
                 interaction.setIdHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_ID)));
                 interaction.setTriggerWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_TRIGGER_WORD)));
                 interaction.setReplyWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_REPLY_PATTERN)));
-
                 listInteraction.add(interaction);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return listInteraction;
     }
@@ -76,14 +76,16 @@ public class InteractionDAO implements IInteractionDAO {
         String selectQuery = "SELECT  * FROM " + SystemConstant.TABLE_INTERACTION + " WHERE "
                 + SystemConstant.COLUMN_ID + " = " + id;
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor != null)
+        InteractionModel interaction = null;
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-        InteractionModel interaction = new InteractionModel();
-        interaction.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
-        interaction.setIdHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_ID)));
-        interaction.setTriggerWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_TRIGGER_WORD)));
-        interaction.setReplyWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_REPLY_PATTERN)));
-
+            interaction = new InteractionModel();
+            interaction.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
+            interaction.setIdHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_ID)));
+            interaction.setTriggerWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_TRIGGER_WORD)));
+            interaction.setReplyWord(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_REPLY_PATTERN)));
+            cursor.close();
+        }
         return interaction;
     }
 
@@ -91,12 +93,12 @@ public class InteractionDAO implements IInteractionDAO {
     @Override
     public List<InteractionModel> findByHeart(long heartId) {
         List<InteractionModel> listInteraction = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM "+ SystemConstant.TABLE_INTERACTION
+        String selectQuery = "SELECT * FROM "+ SystemConstant.TABLE_INTERACTION
                 + " WHERE " + SystemConstant.COLUMN_HEART_ID + " = " +heartId;
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 InteractionModel interaction = new InteractionModel();
                 interaction.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
@@ -106,6 +108,7 @@ public class InteractionDAO implements IInteractionDAO {
 
                 listInteraction.add(interaction);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return listInteraction;
     }

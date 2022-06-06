@@ -35,11 +35,11 @@ public class HeartDAO implements IHeartDAO {
     @Override
     public List<HeartModel> getAll() {
         List<HeartModel> listHeart = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM hearts";
+        String selectQuery = "SELECT * FROM hearts";
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 HeartModel heart = new HeartModel();
                 heart.setId(cursor.getLong((cursor.getColumnIndex(SystemConstant.COLUMN_ID))));
@@ -48,6 +48,7 @@ public class HeartDAO implements IHeartDAO {
                 heart.setFinalReply(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_FINAL_REPLY)));
                 listHeart.add(heart);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return listHeart;
     }
@@ -83,13 +84,16 @@ public class HeartDAO implements IHeartDAO {
         String selectQuery = "SELECT  * FROM " + SystemConstant.TABLE_HEART + " WHERE "
                 + SystemConstant.COLUMN_ID + " = " + id;
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor != null)
+        HeartModel heart = null;
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-        HeartModel heart = new HeartModel();
-        heart.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
-        heart.setHeartName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_NAME)));
-        heart.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_DESCRIPTION)));
-        heart.setFinalReply(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_FINAL_REPLY)));
+            heart = new HeartModel();
+            heart.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
+            heart.setHeartName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_NAME)));
+            heart.setDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_HEART_DESCRIPTION)));
+            heart.setFinalReply(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_FINAL_REPLY)));
+            cursor.close();
+        }
         return heart;
     }
 }

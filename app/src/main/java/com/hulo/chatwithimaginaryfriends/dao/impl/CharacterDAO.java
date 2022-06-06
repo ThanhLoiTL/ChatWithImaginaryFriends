@@ -82,11 +82,11 @@ public class CharacterDAO implements ICharacterDAO {
     @Override
     public List<CharacterModel> getAll() {
         List<CharacterModel> listCharacter = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM "+SystemConstant.TABLE_CHARACTER;
+        String selectQuery = "SELECT * FROM "+SystemConstant.TABLE_CHARACTER;
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 CharacterModel character = new CharacterModel();
                 character.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
@@ -104,6 +104,7 @@ public class CharacterDAO implements ICharacterDAO {
 
                 listCharacter.add(character);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return listCharacter;
     }
@@ -112,11 +113,11 @@ public class CharacterDAO implements ICharacterDAO {
     @Override
     public List<CharacterModel> findCharacterByHeart(long heartId) {
         List<CharacterModel> listCharacter = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM "+SystemConstant.TABLE_CHARACTER +" WHERE "+SystemConstant.COLUMN_CHAR_HEART +" = "+heartId;
+        String selectQuery = "SELECT * FROM "+SystemConstant.TABLE_CHARACTER +" WHERE "+SystemConstant.COLUMN_CHAR_HEART +" = "+heartId;
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 CharacterModel character = new CharacterModel();
                 character.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
@@ -134,6 +135,7 @@ public class CharacterDAO implements ICharacterDAO {
 
                 listCharacter.add(character);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return listCharacter;
     }
@@ -145,21 +147,24 @@ public class CharacterDAO implements ICharacterDAO {
         String selectQuery = "SELECT  * FROM " + SystemConstant.TABLE_CHARACTER + " WHERE "
                 + SystemConstant.COLUMN_ID + " = " + id;
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor != null)
+        CharacterModel character = null;
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-        CharacterModel character = new CharacterModel();
-        character.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
-        character.setName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_NAME)));
-        character.setAvatar(cursor.getBlob(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_AVATAR)));
-        character.setBot(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BOT)));
-        character.setHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEART)));
-        character.setGender(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_GENDER)));
-        character.setBirthday(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BIRTHDAY)));
-        character.setWeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_WEIGHT)));
-        character.setHeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEIGHT)));
-        character.setShortDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_SHORT_DESCRIPTION)));
-        character.setAddress(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ADDRESS)));
-        character.setZodiac(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ZODIAC)));
+            character = new CharacterModel();
+            character.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
+            character.setName(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_NAME)));
+            character.setAvatar(cursor.getBlob(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_AVATAR)));
+            character.setBot(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BOT)));
+            character.setHeart(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEART)));
+            character.setGender(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_GENDER)));
+            character.setBirthday(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_BIRTHDAY)));
+            character.setWeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_WEIGHT)));
+            character.setHeight(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_HEIGHT)));
+            character.setShortDescription(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_SHORT_DESCRIPTION)));
+            character.setAddress(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ADDRESS)));
+            character.setZodiac(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAR_ZODIAC)));
+            cursor.close();
+        }
         return character;
     }
 }

@@ -74,7 +74,7 @@ public class ChatDAO implements IChatDAO {
 
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 ChatModel chat = new ChatModel();
                 chat.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
@@ -84,6 +84,7 @@ public class ChatDAO implements IChatDAO {
                 chat.setIsSend(Boolean.valueOf(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAT_IS_SEND))));
                 listChat.add(chat);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return listChat;
     }
@@ -97,7 +98,7 @@ public class ChatDAO implements IChatDAO {
         String selectQuery = "SELECT * FROM chats AS c1 WHERE c1.id = (SELECT MAX(id) FROM chats as c2 where c1.character_id = c2.character_id) ORDER BY c1.id DESC";
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 ChatModel chat = new ChatModel();
                 chat.setId(cursor.getLong(cursor.getColumnIndex(SystemConstant.COLUMN_ID)));
@@ -107,6 +108,7 @@ public class ChatDAO implements IChatDAO {
                 chat.setIsSend(Boolean.valueOf(cursor.getString(cursor.getColumnIndex(SystemConstant.COLUMN_CHAT_IS_SEND))));
                 listChat.add(chat);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return listChat;
     }
